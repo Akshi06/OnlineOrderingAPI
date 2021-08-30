@@ -2,6 +2,7 @@ package com.sysco.onlineOrder.controller;
 
 import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.service.CustomerServiceInterface;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,14 +16,14 @@ import java.util.List;
 @RequestMapping({"/online-order"})
 public class CustomerController {
     @Autowired
-     private CustomerServiceInterface cusServiceInterface;
+     private CustomerServiceInterface customerServiceInterface;
 
-    @GetMapping("/version")
+    @GetMapping("/customer")
     public ResponseEntity<List<Customer>> getAllCustomer(){
         List<Customer> customers = null;
 
         try {
-            customers = cusServiceInterface.getAllCustomer();
+            customers = customerServiceInterface.getAllCustomer();
         } catch (Exception ex) {
             ex.getMessage();
         }

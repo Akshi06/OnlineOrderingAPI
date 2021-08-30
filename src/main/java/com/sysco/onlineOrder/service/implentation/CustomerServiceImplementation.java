@@ -4,10 +4,12 @@ import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.repository.CustomerRepository;
 import com.sysco.onlineOrder.service.CustomerServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class CustomerServiceImplentation implements CustomerServiceInterface {
+@Service
+public class CustomerServiceImplementation implements CustomerServiceInterface {
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -40,7 +42,7 @@ public class CustomerServiceImplentation implements CustomerServiceInterface {
                customerRepository.deleteById(id);
            }
         } catch (Exception e) {
-            System.out.println("CustomerServiceImplentation.java");
+            System.out.println("CustomerServiceImplementation.java");
         }
         return delCustomerClass;
     }
