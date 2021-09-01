@@ -2,11 +2,11 @@ package com.sysco.onlineOrder.controller;
 
 import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.service.CustomerServiceInterface;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,10 +16,10 @@ import java.util.List;
 @RequestMapping({"/online-order"})
 public class CustomerController {
     @Autowired
-     private CustomerServiceInterface customerServiceInterface;
+    private CustomerServiceInterface customerServiceInterface;
 
     @GetMapping("/customer")
-    public ResponseEntity<List<Customer>> getAllCustomer(){
+    public ResponseEntity<List<Customer>> getAllCustomer() {
         List<Customer> customers = null;
 
         try {
@@ -27,7 +27,18 @@ public class CustomerController {
         } catch (Exception ex) {
             ex.getMessage();
         }
-        return new ResponseEntity<List<Customer>>(customers,HttpStatus.OK);
+        return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
+    }
+
+    @GetMapping("/getById/{id}")
+    public ResponseEntity<Customer> getIdCustomer(@PathVariable("id") int customerId) {
+        Customer customer = null;
+        try {
+            customer = customerServiceInterface.getIdCustomer(customerId);
+        } catch (Exception ex) {
+            ex.getMessage();
+        }
+        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
 }

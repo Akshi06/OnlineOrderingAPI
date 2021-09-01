@@ -3,14 +3,11 @@ package com.sysco.onlineOrder.entity;
 
 
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-//@Table(name = "customer")
-public class Customer {
+@Table(name = "customer")
+public class Customer{
 
     @Id
     @GeneratedValue
@@ -24,19 +21,20 @@ public class Customer {
     private String customer_email;
     @Column(name = "customer_phone_number")
     private int customer_phone;
-//    @Column(name = "customer_address_id")
-//    private CustomerAddress address;
+    @Column(name = "customer_address_id")
+    private int address_id;
 
     public Customer() {
     }
 
-    public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone, CustomerAddress address) {
+    public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone, int address) {
+
         this.cusId = cusId;
         this.customer_type = customer_type;
         this.customer_name = customer_name;
         this.customer_email = customer_email;
         this.customer_phone = customer_phone;
-//        this.address = address;
+        this.address_id = address;
     }
 
     public int getCusId() {
@@ -79,13 +77,13 @@ public class Customer {
         this.customer_phone = customer_phone;
     }
 
-//    public CustomerAddress getAddress() {
-//        return address;
-//    }
-//
-//    public void setAddress(CustomerAddress address) {
-//        this.address = address;
-//    }
+    public int getAddress() {
+        return address_id;
+    }
+
+    public void setAddress(int address) {
+        this.address_id = address;
+    }
 
 
 }

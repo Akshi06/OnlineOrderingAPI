@@ -1,13 +1,12 @@
 package com.sysco.onlineOrder.entity;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "order_product")
 public class OrderProduct {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "order_product_id")
     private int orderProduct;
     @Column(name = "product_quantity")

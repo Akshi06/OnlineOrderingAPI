@@ -25,22 +25,21 @@ public class CustomerServiceImplementation implements CustomerServiceInterface {
     }
 
     @Override
-    public Customer update(Customer customer) {
-        return customerRepository.save(customer);
+    public Customer update(Customer customers) {
+        return customerRepository.save(customers);
     }
 
     @Override
     public Customer deleteCustomer(int id) {
         Customer delCustomerClass = null;
-        try{
+        try {
             delCustomerClass = customerRepository.findById(id).orElse(null);
 
-           if (delCustomerClass == null){
-               throw new Exception("Customer not found...!");
-           }
-           else {
-               customerRepository.deleteById(id);
-           }
+            if (delCustomerClass == null) {
+                throw new Exception("Customer not found...!");
+            } else {
+                customerRepository.deleteById(id);
+            }
         } catch (Exception e) {
             System.out.println("CustomerServiceImplementation.java");
         }

@@ -1,6 +1,7 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "payment")

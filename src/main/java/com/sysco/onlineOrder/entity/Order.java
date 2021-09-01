@@ -1,12 +1,13 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table(name = "order_detail")
 public class Order {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     @Column(name = "order_id")
     private int orderId;
     @Column(name = "order_date")

@@ -1,11 +1,11 @@
 package com.sysco.onlineOrder.entity;
 
-public class Date {
+public class DateFormat {
         int year;
         int month;
         int date;
 
-        public Date(int year, int month, int date) {
+        public DateFormat(int year, int month, int date) {
             this.year = year;
             this.month = month;
             this.date = date;
@@ -34,6 +34,6 @@ public class Date {
         public void setDate(int date) {
             this.date = date;
         }
-    }
+}
 
 
