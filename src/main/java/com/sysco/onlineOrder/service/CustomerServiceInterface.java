@@ -9,7 +9,7 @@ public interface CustomerServiceInterface {
 
     Customer getIdCustomer(int id);
 
-    Customer update(Customer customers);
+    Customer add(Customer customers);
 
     Customer deleteCustomer(int id);
 }

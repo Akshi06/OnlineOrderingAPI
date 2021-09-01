@@ -2,12 +2,13 @@ package com.sysco.onlineOrder.entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "customer_address")
 public class CustomerAddress {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_address_id")
     private int cusAddressId;
     @Column(name = "zip_code")

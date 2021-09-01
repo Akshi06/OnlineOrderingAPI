@@ -25,7 +25,7 @@ public class CustomerServiceImplementation implements CustomerServiceInterface {
     }
 
     @Override
-    public Customer update(Customer customers) {
+    public Customer add(Customer customers) {
         return customerRepository.save(customers);
     }
 

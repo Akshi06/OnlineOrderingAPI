@@ -1,8 +1,5 @@
 package com.sysco.onlineOrder.entity;
 
-
-
-
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +7,7 @@ import javax.persistence.*;
 public class Customer{
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int cusId;
     @Column(name = "customer_type")
@@ -21,21 +18,24 @@ public class Customer{
     private String customer_email;
     @Column(name = "customer_phone_number")
     private int customer_phone;
-    @Column(name = "customer_address_id")
-    private int address_id;
+    @OneToOne
+    @MapsId
+    @JoinColumn(name="customer_address_id")
+    private CustomerAddress address;
 
     public Customer() {
     }
 
-    public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone, int address) {
-
+    public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone , CustomerAddress address) {
+        super();
         this.cusId = cusId;
         this.customer_type = customer_type;
         this.customer_name = customer_name;
         this.customer_email = customer_email;
         this.customer_phone = customer_phone;
-        this.address_id = address;
+        this.address = address;
     }
+
 
     public int getCusId() {
         return cusId;
@@ -77,12 +77,12 @@ public class Customer{
         this.customer_phone = customer_phone;
     }
 
-    public int getAddress() {
-        return address_id;
+    public CustomerAddress getAddress() {
+        return address;
     }
 
-    public void setAddress(int address) {
-        this.address_id = address;
+    public void setAddress(CustomerAddress address) {
+        this.address = address;
     }
 
 
