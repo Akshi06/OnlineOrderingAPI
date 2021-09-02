@@ -11,6 +11,14 @@ public class OrderProduct {
     private int orderProduct;
     @Column(name = "product_quantity")
     private float productQuantity;
+    @ManyToOne
+    @MapsId
+    @JoinColumn(name = "order_id")
+    private Order order;
+    @ManyToOne
+    @MapsId
+    @JoinColumn(name = "product_id")
+    private Product product;
 
     public OrderProduct() {
     }
@@ -18,6 +26,22 @@ public class OrderProduct {
     public OrderProduct(int orderProduct, float productQuantity) {
         this.orderProduct = orderProduct;
         this.productQuantity = productQuantity;
+    }
+
+    public Order getOrder() {
+        return order;
+    }
+
+    public void setOrder(Order order) {
+        this.order = order;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public int getOrderProduct() {
@@ -36,11 +60,5 @@ public class OrderProduct {
         this.productQuantity = productQuantity;
     }
 
-    @Override
-    public String toString() {
-        return "OrderProduct{" +
-                "orderProduct=" + orderProduct +
-                ", productQuantity=" + productQuantity +
-                '}';
-    }
+
 }

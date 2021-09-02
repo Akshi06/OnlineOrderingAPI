@@ -1,5 +1,6 @@
 package com.sysco.onlineOrder.entity;
 
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -12,13 +13,17 @@ public class Order {
     private int orderId;
     @Column(name = "order_date")
     private Date orderDate;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private Customer customer;
 
     public Order() {
     }
 
-    public Order(int orderId, Date orderDate) {
+    public Order(int orderId, Date orderDate,Customer customer) {
         this.orderId = orderId;
         this.orderDate = orderDate;
+        this.customer = customer;
     }
 
     public int getOrderId() {
@@ -37,11 +42,11 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", orderDate=" + orderDate +
-                '}';
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
     }
 }

@@ -1,10 +1,12 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "customer")
-public class Customer{
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +20,19 @@ public class Customer{
     private String customer_email;
     @Column(name = "customer_phone_number")
     private int customer_phone;
-    @OneToOne
+    @ManyToOne
     @MapsId
     @JoinColumn(name="customer_address_id")
     private CustomerAddress address;
+
+//    @OneToMany(mappedBy = "Customer")
+//    private Set<Order> orderset;
+
 
     public Customer() {
     }
 
     public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone , CustomerAddress address) {
-        super();
         this.cusId = cusId;
         this.customer_type = customer_type;
         this.customer_name = customer_name;
@@ -84,6 +89,13 @@ public class Customer{
     public void setAddress(CustomerAddress address) {
         this.address = address;
     }
+//    public Set<Order> getOrderset() {
+//        return orderset;
+//    }
+//
+//    public void setOrderset(Set<Order> orderset) {
+//        this.orderset = orderset;
+//    }
 
 
 }
