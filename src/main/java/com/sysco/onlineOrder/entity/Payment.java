@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "payment")
+@Table(name = "payments")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,15 +16,37 @@ public class Payment {
     private String paymentMethod;
     @Column(name = "payment_date")
     private Date paymentDate;
+//
+//    @OneToOne
+//    @JoinColumn(name = "order_product_id")
+//    private OrderProduct order_product;
+
+//    @OneToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "order_product_id")
+//    private OrderProduct order_product;
+@OneToOne
+@JoinColumn(name = "order_product_id")
+private OrderProduct order_product;
 
     public Payment() {
+
     }
 
-    public Payment(int invoiceNo, int totalPayment, String paymentMethod, Date paymentDate) {
+    public Payment(int invoiceNo, int totalPayment, String paymentMethod, Date paymentDate ,OrderProduct orderProduct) {
         this.invoiceNo = invoiceNo;
         this.totalPayment = totalPayment;
         this.paymentMethod = paymentMethod;
         this.paymentDate = paymentDate;
+        this.order_product = orderProduct;
+
+    }
+
+    public OrderProduct getOrderProduct() {
+        return order_product;
+    }
+
+    public void setOrderProduct(OrderProduct orderProduct) {
+        this.order_product = orderProduct;
     }
 
     public int getInvoiceNo() {
@@ -59,14 +81,5 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
-    @Override
-    public String toString() {
-        return "Payment{" +
-                "invoiceNo=" + invoiceNo +
-                ", totalPayment=" + totalPayment +
-                ", paymentMethod='" + paymentMethod + '\'' +
-                ", paymentDate=" + paymentDate +
-                '}';
-    }
 }
 

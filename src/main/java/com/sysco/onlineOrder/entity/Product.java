@@ -1,6 +1,7 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "product")
@@ -17,6 +18,11 @@ public class Product {
     private float stock;
     @Column(name = "product_name")
     private String productName;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderProduct> orderProductList;
+
+
 
     public Product() {
     }

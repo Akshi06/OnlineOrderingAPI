@@ -20,6 +20,9 @@ public class CustomerAddress {
     @Column(name = "state")
     private String state;
 
+    @OneToMany(mappedBy = "customer_address")
+    private List<Customer> customerList;
+
     public CustomerAddress() {
     }
 

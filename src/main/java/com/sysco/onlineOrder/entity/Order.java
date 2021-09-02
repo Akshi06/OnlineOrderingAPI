@@ -3,6 +3,7 @@ package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "order_detail")
@@ -13,9 +14,13 @@ public class Order {
     private int orderId;
     @Column(name = "order_date")
     private Date orderDate;
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    @OneToMany(mappedBy = "order_detail")
+    private List<OrderProduct> orderProductList;
 
     public Order() {
     }

@@ -1,6 +1,7 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "order_product")
@@ -8,32 +9,39 @@ public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_product_id")
-    private int orderProduct;
+    private int orderProduct_id;
     @Column(name = "product_quantity")
     private float productQuantity;
+
     @ManyToOne
-    @MapsId
     @JoinColumn(name = "order_id")
-    private Order order;
+    private Order order_detail;
+
     @ManyToOne
-    @MapsId
     @JoinColumn(name = "product_id")
     private Product product;
+
+
+@OneToOne(mappedBy = "order_product")
+private Payment payment;
+
 
     public OrderProduct() {
     }
 
-    public OrderProduct(int orderProduct, float productQuantity) {
-        this.orderProduct = orderProduct;
+    public OrderProduct(int orderProduct_id, float productQuantity, Order order_id, Product product) {
+        this.orderProduct_id = orderProduct_id;
         this.productQuantity = productQuantity;
+        this.order_detail = order_id;
+        this.product = product;
     }
 
     public Order getOrder() {
-        return order;
+        return order_detail;
     }
 
     public void setOrder(Order order) {
-        this.order = order;
+        this.order_detail = order;
     }
 
     public Product getProduct() {
@@ -44,12 +52,12 @@ public class OrderProduct {
         this.product = product;
     }
 
-    public int getOrderProduct() {
-        return orderProduct;
+    public int getOrderProduct_id() {
+        return orderProduct_id;
     }
 
-    public void setOrderProduct(int orderProduct) {
-        this.orderProduct = orderProduct;
+    public void setOrderProduct_id(int orderProduct_id) {
+        this.orderProduct_id = orderProduct_id;
     }
 
     public float getProductQuantity() {
