@@ -8,45 +8,45 @@ import java.util.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "invoice_id")
+    @Column(name = "invoiceId")
     private int invoiceNo;
-    @Column(name = "total_amount")
+    @Column(name = "totalAmount")
     private int totalPayment;
-    @Column(name = "payment_method")
+    @Column(name = "paymentMethod")
     private String paymentMethod;
-    @Column(name = "payment_date")
+    @Column(name = "paymentDate")
     private Date paymentDate;
 //
 //    @OneToOne
 //    @JoinColumn(name = "order_product_id")
 //    private OrderProduct order_product;
 
-//    @OneToOne(fetch = FetchType.LAZY)
+    //    @OneToOne(fetch = FetchType.LAZY)
 //    @JoinColumn(name = "order_product_id")
 //    private OrderProduct order_product;
-@OneToOne
-@JoinColumn(name = "order_product_id")
-private OrderProduct order_product;
+    @OneToOne
+    @JoinColumn(name = "orderProductId")
+    private OrderProduct orderProduct;
 
     public Payment() {
 
     }
 
-    public Payment(int invoiceNo, int totalPayment, String paymentMethod, Date paymentDate ,OrderProduct orderProduct) {
+    public Payment(int invoiceNo, int totalPayment, String paymentMethod, Date paymentDate, OrderProduct orderProduct) {
         this.invoiceNo = invoiceNo;
         this.totalPayment = totalPayment;
         this.paymentMethod = paymentMethod;
         this.paymentDate = paymentDate;
-        this.order_product = orderProduct;
+        this.orderProduct = orderProduct;
 
     }
 
     public OrderProduct getOrderProduct() {
-        return order_product;
+        return orderProduct;
     }
 
     public void setOrderProduct(OrderProduct orderProduct) {
-        this.order_product = orderProduct;
+        this.orderProduct = orderProduct;
     }
 
     public int getInvoiceNo() {

@@ -1,6 +1,5 @@
 package com.sysco.onlineOrder.controller;
 
-import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.Order;
 import com.sysco.onlineOrder.service.OrderServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/online-order"})
+@RequestMapping({"/v1/online-order"})
 public class OrderController {
 
     @Autowired
     private OrderServiceInterface orderServiceInterface;
 
-    @GetMapping("/get/order")
-    public ResponseEntity <List<Order>> getAllOrder(){
+    @GetMapping("/order")
+    public ResponseEntity<List<Order>> getAllOrder() {
         List<Order> orders = null;
         try {
             orders = orderServiceInterface.getAllOrder();
@@ -26,17 +25,17 @@ public class OrderController {
             ex.getMessage();
         }
 
-        return new ResponseEntity<List<Order>>(orders , HttpStatus.OK);
+        return new ResponseEntity<List<Order>>(orders, HttpStatus.OK);
     }
 
-    @PostMapping("/add/order")
-    public ResponseEntity<Order> add(@RequestBody Order order){
-        Order order1 =null;
-        try{
+    @PostMapping("/order")
+    public ResponseEntity<Order> add(@RequestBody Order order) {
+        Order order1 = null;
+        try {
             order1 = orderServiceInterface.add(order);
         } catch (Exception ex) {
             ex.getMessage();
         }
-        return new ResponseEntity<Order>(order1,HttpStatus.OK);
+        return new ResponseEntity<Order>(order1, HttpStatus.OK);
     }
 }

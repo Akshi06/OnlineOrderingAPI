@@ -1,29 +1,29 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
-@Table(name = "order_product")
+@Table(name = "orderProduct")
 public class OrderProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_product_id")
+    @Column(name = "orderProductId")
     private int orderProduct_id;
-    @Column(name = "product_quantity")
+
+    @Column(name = "productQuantity")
     private float productQuantity;
 
     @ManyToOne
-    @JoinColumn(name = "order_id")
-    private Order order_detail;
+    @JoinColumn(name = "orderId")
+    private Order orderDetail;
 
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "productId")
     private Product product;
 
 
-@OneToOne(mappedBy = "order_product")
-private Payment payment;
+    @OneToOne(mappedBy = "orderProduct")
+    private Payment payment;
 
 
     public OrderProduct() {
@@ -32,17 +32,14 @@ private Payment payment;
     public OrderProduct(int orderProduct_id, float productQuantity, Order order_id, Product product) {
         this.orderProduct_id = orderProduct_id;
         this.productQuantity = productQuantity;
-        this.order_detail = order_id;
+        this.orderDetail = order_id;
         this.product = product;
     }
 
     public Order getOrder() {
-        return order_detail;
+        return orderDetail;
     }
 
-    public void setOrder(Order order) {
-        this.order_detail = order;
-    }
 
     public Product getProduct() {
         return product;

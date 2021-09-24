@@ -25,7 +25,7 @@ public class PaymentServiceImplementation implements PaymentServiceInterface {
     }
 
     @Override
-    public Payment update(Payment payment) {
+    public Payment add(Payment payment) {
         return paymentRepository.save(payment);
     }
 

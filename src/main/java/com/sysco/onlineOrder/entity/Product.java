@@ -8,31 +8,38 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @Column(name = "productId")
     private int productId;
-    @Column(name = "product_price")
+    @Column(name = "productPrice")
     private double price;
-    @Column(name = "product_categories")
+    @Column(name = "productCategories")
     private String categories;
-    @Column(name = "number_of_stock")
-    private float stock;
-    @Column(name = "product_name")
+    @Column(name = "productName")
     private String productName;
+    @Column (name = "productImg")
+    private String img;
 
     @OneToMany(mappedBy = "product")
     private List<OrderProduct> orderProductList;
 
 
-
     public Product() {
     }
 
-    public Product(int productId, double price, String categories, float stock, String productName) {
+    public Product(int productId, double price, String categories, String productName , String img) {
         this.productId = productId;
         this.price = price;
         this.categories = categories;
-        this.stock = stock;
         this.productName = productName;
+        this.img = img;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public int getProductId() {
@@ -59,13 +66,6 @@ public class Product {
         this.categories = categories;
     }
 
-    public float getStock() {
-        return stock;
-    }
-
-    public void setStock(float stock) {
-        this.stock = stock;
-    }
 
     public String getProductName() {
         return productName;
@@ -81,8 +81,9 @@ public class Product {
                 "productId=" + productId +
                 ", price=" + price +
                 ", categories='" + categories + '\'' +
-                ", stock=" + stock +
                 ", productName='" + productName + '\'' +
+                ", img='" + img + '\'' +
+                ", orderProductList=" + orderProductList +
                 '}';
     }
 }

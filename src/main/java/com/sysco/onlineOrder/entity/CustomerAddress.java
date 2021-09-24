@@ -5,22 +5,22 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "customer_address")
+@Table(name = "customerAddress")
 public class CustomerAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_address_id")
+    @Column(name = "customerAddressId")
     private int cusAddressId;
-    @Column(name = "zip_code")
+    @Column(name = "zipCode")
     private int zipCode;
-    @Column(name = "street ")
+    @Column(name = "street")
     private String street;
     @Column(name = "city")
     private String city;
     @Column(name = "state")
     private String state;
 
-    @OneToMany(mappedBy = "customer_address")
+    @OneToMany(mappedBy = "customerAddress")
     private List<Customer> customerList;
 
     public CustomerAddress() {
@@ -31,9 +31,10 @@ public class CustomerAddress {
         this.zipCode = zipCode;
         this.street = street;
         this.city = city;
-       this.state = state;
-  }
-      public int getCusAddressId() {
+        this.state = state;
+    }
+
+    public int getCusAddressId() {
         return cusAddressId;
     }
 

@@ -9,7 +9,7 @@ public interface PaymentServiceInterface {
 
     Payment getIdPayment(int invoice_id);
 
-    Payment update(Payment payment);
+    Payment add(Payment payment);
 
     Payment deletePayment(int invoice_id);
 }

@@ -6,6 +6,7 @@ import com.sysco.onlineOrder.entity.Order;
 import java.util.List;
 
 public interface OrderServiceInterface {
-    public List<Order> getAllOrder();
-    public Order add(Order order);
+    List<Order> getAllOrder();
+
+    Order add(Order order);
 }

@@ -1,9 +1,7 @@
 package com.sysco.onlineOrder.entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "customer")
@@ -11,37 +9,34 @@ public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customer_id")
+    @Column(name = "customerId")
     private int cusId;
-    @Column(name = "customer_type")
-    private String customer_type;
-    @Column(name = "customer_name")
+    @Column(name = "customerName")
     private String customer_name;
-    @Column(name = "customer_email")
+    @Column(name = "customerEmail")
     private String customer_email;
-    @Column(name = "customer_phone_number")
+    @Column(name = "customerPhoneNumber")
     private int customer_phone;
 
     @ManyToOne
-    @JoinColumn(name = "customer_address_id")
-    private CustomerAddress customer_address;
-
+    @JoinColumn(name = "customerAddressId")
+    private CustomerAddress customerAddress;
 
 
     @OneToMany(mappedBy = "customer")
     private List<Order> orderList;
 
 
+
     public Customer() {
     }
 
-    public Customer(int cusId, String customer_type, String customer_name, String customer_email, int customer_phone , CustomerAddress customer_address) {
+    public Customer(int cusId, String customer_name, String customer_email, int customer_phone, CustomerAddress customer_address) {
         this.cusId = cusId;
-        this.customer_type = customer_type;
         this.customer_name = customer_name;
         this.customer_email = customer_email;
         this.customer_phone = customer_phone;
-        this.customer_address = customer_address;
+        this.customerAddress = customer_address;
     }
 
 
@@ -51,14 +46,6 @@ public class Customer {
 
     public void setCusId(int cusId) {
         this.cusId = cusId;
-    }
-
-    public String getCustomer_type() {
-        return customer_type;
-    }
-
-    public void setCustomer_type(String customer_type) {
-        this.customer_type = customer_type;
     }
 
     public String getCustomer_name() {
@@ -86,21 +73,13 @@ public class Customer {
     }
 
     public CustomerAddress getAddress() {
-        return customer_address;
+        return customerAddress;
     }
 
     public void setAddress(CustomerAddress address) {
-        this.customer_address = address;
+        this.customerAddress = address;
     }
 
-
-//    public Set<Order> getOrderset() {
-//        return orderset;
-//    }
-//
-//    public void setOrderset(Set<Order> orderset) {
-//        this.orderset = orderset;
-//    }
 
 
 }

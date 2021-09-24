@@ -6,26 +6,26 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-@Table(name = "order_detail")
+@Table(name = "orderDetail")
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @Column(name = "orderId")
     private int orderId;
-    @Column(name = "order_date")
+    @Column(name = "orderDate")
     private Date orderDate;
 
     @ManyToOne
-    @JoinColumn(name = "customer_id")
+    @JoinColumn(name = "customerId")
     private Customer customer;
 
-    @OneToMany(mappedBy = "order_detail")
+    @OneToMany(mappedBy = "orderDetail")
     private List<OrderProduct> orderProductList;
 
     public Order() {
     }
 
-    public Order(int orderId, Date orderDate,Customer customer) {
+    public Order(int orderId, Date orderDate, Customer customer) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.customer = customer;

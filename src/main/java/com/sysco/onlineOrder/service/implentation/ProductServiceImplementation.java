@@ -6,10 +6,14 @@ import com.sysco.onlineOrder.service.ProductServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public class ProductServiceImplementation implements ProductServiceInterface {
+
+    static List<Product> products = new ArrayList<>();
+
     @Autowired
     private ProductRepository productRepository;
 
@@ -19,12 +23,22 @@ public class ProductServiceImplementation implements ProductServiceInterface {
     }
 
     @Override
+    public Product getProductByCategories (String categories) {
+        for (Product product : products){
+            if (product.getCategories().equalsIgnoreCase(categories)){
+                return product;
+            }
+        }
+        return null;
+    }
+
+    @Override
     public Product getIdProduct(int ProductId) {
         return productRepository.findById(ProductId).orElse(null);
     }
 
     @Override
-    public Product update(Product product) {
+    public Product add(Product product) {
         return productRepository.save(product);
     }
 

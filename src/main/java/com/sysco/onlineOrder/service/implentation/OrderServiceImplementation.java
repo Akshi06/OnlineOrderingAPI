@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class OrderServiceImplementation implements OrderServiceInterface {
     @Autowired
@@ -14,7 +15,7 @@ public class OrderServiceImplementation implements OrderServiceInterface {
 
     @Override
     public List<Order> getAllOrder() {
-        return (List<Order>) orderRepository.findAll() ;
+        return (List<Order>) orderRepository.findAll();
     }
 
     @Override

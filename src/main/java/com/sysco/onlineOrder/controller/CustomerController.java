@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping({"/online-order"})
+@RequestMapping({"/v1/online-order"})
 public class CustomerController {
     @Autowired
     private CustomerServiceInterface customerServiceInterface;
@@ -27,7 +27,7 @@ public class CustomerController {
         return new ResponseEntity<List<Customer>>(customers, HttpStatus.OK);
     }
 
-    @GetMapping("/getById/{id}")
+    @GetMapping("customer/{id}")
     public ResponseEntity<Customer> getIdCustomer(@PathVariable("id") int customerId) {
         Customer customer = null;
         try {
@@ -38,15 +38,15 @@ public class CustomerController {
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
-    @PostMapping("/add/customer")
-    public ResponseEntity<Customer> add(@RequestBody Customer cus){
-        Customer customer =null;
-        try{
+    @PostMapping("/customer")
+    public ResponseEntity<Customer> add(@RequestBody Customer cus) {
+        Customer customer = null;
+        try {
             customer = customerServiceInterface.add(cus);
         } catch (Exception ex) {
             ex.getMessage();
         }
-        return new ResponseEntity<Customer>(customer,HttpStatus.OK);
+        return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
 
 }

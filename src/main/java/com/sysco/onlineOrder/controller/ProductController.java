@@ -5,21 +5,22 @@ import com.sysco.onlineOrder.service.ProductServiceInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping({"/online-order"})
+@RequestMapping({"/v1/online-order"})
 public class ProductController {
 
     @Autowired
     private ProductServiceInterface productServiceInterface;
 
-    @GetMapping("/product/all")
+
+
+    @GetMapping("/product")
     public ResponseEntity<List<Product>> getAllProduct() {
         List<Product> products = null;
 
@@ -31,7 +32,33 @@ public class ProductController {
         return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
-    @GetMapping("/product/{id}")
+
+//    ----------- RequestParam
+
+    @GetMapping("/product/param")
+    public List<Product> getCategories (@RequestParam (required = false) String categories) {
+        if(categories == null){
+            return  productServiceInterface.getAllProduct();
+        }
+
+        List<Product> productCategories = new ArrayList<>();
+
+        Product product = productServiceInterface.getProductByCategories(categories);
+        productCategories.add(product);
+        return productCategories;
+
+//        List<Product> products = null;
+//
+//        try {
+//            products = productServiceInterface.getAllProduct(categories);
+//        } catch (Exception ex) {
+//            ex.getMessage();
+//        }
+//        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+
+    }
+
+    @GetMapping("/product/id/{id}")
     public ResponseEntity<Product> getIdProduct(@PathVariable("ProductId") int ProductId) {
         Product products = null;
 
@@ -42,4 +69,5 @@ public class ProductController {
         }
         return new ResponseEntity<Product>(products, HttpStatus.OK);
     }
+
 }
