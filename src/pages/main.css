@@ -1,0 +1,139 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.mainImg{
+    background-size: cover;
+    width: 100%;
+    height: 800px;  
+}
+.firstHeading{
+    font-family:cookie,cursive;
+    color:rgb(255, 99, 37);
+    font-size: 19px;
+    line-height: 36px;
+    font-weight: 400;
+    font-style: normal;
+}
+.first{
+    margin-top: -505px;
+    box-sizing: border-box;
+    width: 50%;
+    height: 50;
+}
+
+.firstP{
+    font-size: 50px;
+    line-height: 60px;
+    font-weight: 700;
+    font-style: normal;
+    font-family: cardo,serif;
+}
+.two{
+    padding-top: 25%;
+    box-sizing: border-box;
+    width: 45%;
+    height: 20%;
+    margin: auto;
+
+}
+.seconeTopic{
+    color:rgb(255, 99, 37);
+    font-family:cookie,cursive;
+    font-size: 36px;
+    line-height: 46px;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+}
+.secP{
+    font-family: Cardo,serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 42px;
+    line-height: 52px;
+    color: #000;
+    text-align: center;
+    padding-bottom: 5%;
+}
+.three{
+    box-sizing: border-box;
+    /* background-color: rgba(0, 0, 0, 0.8); */
+    width: 80%;
+    height:400px;
+    margin: auto;
+}
+.threePic{
+    display: flex;
+    justify-content: space-around;
+    /* padding-bottom: 5%; */
+}
+
+.soup{
+    padding: 3% 2% 2%;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+     /* box-shadow: rgba(0, 0, 0, 0.288) 0px 3px 8px; */
+     /* box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px; */
+}
+.soup1{
+    width: 300px;
+    height: 350px;
+
+}
+.soupB{
+    background-color: rgba(15, 15, 15, 0.582);
+    display: flex;
+    /* margin: auto; */
+    padding-left: 35%;
+    font-family: cookie;
+    font-size: 36px;
+    width: 100%;
+    height: 12%;
+    color:whitesmoke;
+}
+
+.pasta{
+    padding: 3% 2% 2% ;
+    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+}
+.pasta1{
+    width: 300px;
+    height: 350px;
+
+}
+.pastaB{
+    background-color: rgba(15, 15, 15, 0.582);
+    display: flex;
+    /* margin: auto; */
+    padding-left: 35%;
+    font-family: cookie;
+    font-size: 36px;
+    width: 100%;
+    height: 12%;
+    color:whitesmoke;
+
+}
+.salad{
+    padding: 3% 2% 2%;
+    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 10px 20px;
+}
+.salad1{
+    width: 300px;
+    height: 350px;
+}
+.saladB{
+    background-color: rgba(15, 15, 15, 0.582);
+    display: flex;
+    /* margin: auto; */
+    padding-left: 35%;
+    font-family: cookie;
+    font-size: 36px;
+    width: 100%;
+    height: 12%;
+    color:whitesmoke;
+}
+.fmain{
+    padding-top: 10%;
+}

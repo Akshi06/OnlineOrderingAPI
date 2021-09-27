@@ -1,0 +1,11 @@
+.logoImg{
+    width: 150px;
+    margin-top: 6px;
+    margin-left: 5%;
+    float: left;
+}
+.logo{
+    box-sizing: border-box;
+    background-color:rgb(65, 64, 64);
+    height: 70px;
+}
