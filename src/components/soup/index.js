@@ -1,6 +1,7 @@
 import React from 'react';
 import './soup.css';
-// import coverImg from './image/soupCimg.jpg'
+import SoupItem from './soupItem/soupItem'
+
 
 const soup = () => {
     return (
@@ -15,6 +16,7 @@ const soup = () => {
                         </div>
                     </div>
                 </section>
+                <SoupItem />
             </div>  
         </div>
     );

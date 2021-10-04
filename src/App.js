@@ -1,9 +1,13 @@
+import{BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+
 import './App.css';
 import PastaPage from './pages/Pasta';
 import Main from './pages/main';
-import SoupPage from './pages/soupPage';
-import Salad from './pages/salad';
-import{Broweser as Router, Route, Switch} from 'react-router-dom';
+import SoupPage from './pages/SoupPage';
+import SaladPage from './pages/salad';
+import ProductSoup from './components/soup/soupItem/ProductSoup';
+
+
 
 
 
@@ -11,7 +15,17 @@ import{Broweser as Router, Route, Switch} from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Main />
+     
+      <Router>
+        <Switch>
+          <Route path = '/' exact > <Main/> </Route>
+          <Route path = '/SoupPage' exact > <SoupPage/> </Route>
+          <Route path = '/PastaPage' exact > <PastaPage/> </Route>
+          <Route path = '/SaladPage' exact > <SaladPage/> </Route>
+          <Route exact path="/view-contact-details/:productId"><ProductSoup/></Route>
+          
+        </Switch>
+      </Router>
       
       {/* <PastaPage /> */}
       {/* <SoupPage /> */}

@@ -1,12 +1,11 @@
+import React, { Component } from 'react';
+import './item.css';
 import ProductService from '../../../service/ProductService';
-import react, { Component } from 'react';
-import salad from '../salad';
-import './item.css'
-// import image from './summer.jpg'
 
 
 
-class SaladItem extends react.Component {
+
+class SaladItem extends React.Component {
     
     constructor(props){
         super(props)
@@ -28,16 +27,15 @@ class SaladItem extends react.Component {
     render(){
         
             return(
-                <div className = 'item'>
-                    {/* <h1>Salad</h1> */}
-                    <div>
+                <div className ='topic'>
+                    <h1>_. Salad Dishes._</h1>
+                    <div className='mainCard'>
                     
                         {
                         
                             this.state.item.map(
                                 items =>
-                                        <h3 key = {items.categories === "Salad"}>
-                                            <div className = 'topCard'>
+                                        <h3 key = {items.categories}>
                                                 <div className = 'card'>
                                                     <img src={items.img} alt={items.productName} className='itemImg'/>
                                                     <div className = 'cardItem'>
@@ -45,8 +43,6 @@ class SaladItem extends react.Component {
                                                         <h3> Rs:{items.price}</h3>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        
                                         </h3> 
 
                             )

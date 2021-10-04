@@ -3,33 +3,20 @@
     display: flex;
 }
 
-.soupItem{
-    box-sizing: border-box;
-    height: auto;
-    width: 50%;
-    padding-top: 12%;
-    margin: auto;
+.topic{
+    padding-top: 15%;
 }
-
-.detail{
+.topic h1{
+    font-family:cookie,cursive;
+    color:rgb(255, 99, 37);
+    font-size: 53px;
+    line-height: 36px;
+    font-weight: 400;
+    font-style: normal;
+}
+.ma
+.mainCard{
     padding-top: 5%;
-    padding-left: 7%;
-    line-height: 30px;
-}
-.name{
-    color: black;
-    font-size: 24px;
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
-}
-
-.price{
-    color: black;
-    font-size: 24px;
-}
-.soupabutton{
-    width: 120px;
-    height: 30px;
-    background-color: rgb(231, 231, 231);
 }
 .card{
     box-sizing: border-box;

@@ -22,12 +22,13 @@ class pastaItem extends React.Component {
 
 
 
+
     render(){
         
         return(
-            <div>
-                <h1>Pasta</h1>
-                <div>
+            <div className ='topic'>
+                <h1>_. Pasta Dishes ._</h1>
+                <div className='mainCard'>
                     {
                         this.state.item.map(
                             items =>                 
@@ -37,6 +38,9 @@ class pastaItem extends React.Component {
                                 <div className = 'cardItem'>
                                     <h3>{items.productName}</h3>
                                         <h3> Rs:{items.price}</h3>
+                                        
+                                        <button>Order</button>
+                                     
                                     </div>
                                 </div>
                             </h3> 
