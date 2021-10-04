@@ -31,14 +31,14 @@ class soupItem extends React.Component {
                     <div className='mainCard'>
                         {
                             this.state.item.map(
-                                items =>
-                                        <h3 key = {items.categories}>
+                                soupItem =>
+                                        <h3 key = {soupItem.categories}>
                                             <div className = 'card'>
-                                                <img src={items.img} alt={items.productName} className='itemImg'/>
+                                                <img src={soupItem.img} alt={soupItem.productName} className='itemImg'/>
                                                 <div className = 'cardItem'>
-                                                    <h3>{items.productName}</h3>
-                                                    <h3> Rs:{items.price}</h3>
-                                                    <Link to={{pathname:`/view-contact-details/${items.productId}`,state:{ item:items }}}>
+                                                    <h3>{soupItem.productName}</h3>
+                                                    <h3> Rs:{soupItem.price}</h3>
+                                                    <Link to={{pathname:`/view-contact-details/${soupItem.productId}`,state:{ item:soupItem }}}>
                                                     
                                                         <button>Order</button>
                                                     </Link>
