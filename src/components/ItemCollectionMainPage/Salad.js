@@ -1,8 +1,7 @@
 import React from 'react';
-// import coverImg from './image/sm.png';
-import './salad.css';
+import './ItemIndex.css';
 
-const salad = () => {
+const Salad = () => {
     return (
         <div>
             <section className="oneSalad">
@@ -19,4 +18,4 @@ const salad = () => {
     );
 };
 
-export default salad;
+export default Salad;

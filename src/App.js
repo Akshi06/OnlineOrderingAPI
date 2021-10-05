@@ -1,11 +1,11 @@
 import{BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import './App.css';
-import PastaPage from './pages/Pasta';
+import PastaPage from './pages/PastaPage';
 import Main from './pages/main';
 import SoupPage from './pages/SoupPage';
-import SaladPage from './pages/salad';
-import ProductSoup from './components/soup/soupItem/ProductSoup';
+import SaladPage from './pages/SaladPage';
+import ViewSoupProductDetail from './components/ViweProducts/ViewSoupProductDetail';
 
 
 
@@ -22,15 +22,10 @@ function App() {
           <Route path = '/SoupPage' exact > <SoupPage/> </Route>
           <Route path = '/PastaPage' exact > <PastaPage/> </Route>
           <Route path = '/SaladPage' exact > <SaladPage/> </Route>
-          <Route exact path="/view-contact-details/:productId"><ProductSoup/></Route>
+          <Route exact path="/view-product-details/:productId"><ViewSoupProductDetail/></Route>
           
         </Switch>
       </Router>
-      
-      {/* <PastaPage /> */}
-      {/* <SoupPage /> */}
-      {/* <Salad /> */}
-
     </div>
   );
 }

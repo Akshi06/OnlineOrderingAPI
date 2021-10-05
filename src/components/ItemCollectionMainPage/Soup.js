@@ -1,9 +1,9 @@
 import React from 'react';
-import './soup.css';
-import SoupItem from './soupItem/soupItem'
+import './ItemIndex.css';
+import SoupCollection from '../ItemCollection/SoupCollection'
 
 
-const soup = () => {
+const Soup = () => {
     return (
         <div>
             <div>
@@ -16,10 +16,10 @@ const soup = () => {
                         </div>
                     </div>
                 </section>
-                <SoupItem />
+                <SoupCollection />
             </div>  
         </div>
     );
 };
 
-export default soup;
+export default Soup;

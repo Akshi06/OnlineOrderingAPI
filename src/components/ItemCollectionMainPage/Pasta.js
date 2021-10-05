@@ -1,8 +1,8 @@
 import React from 'react';
-import './pasta.css';
+import './ItemIndex.css';
 
 
-const index = () => {
+const Pasta = () => {
     return (
         <div>
             <section className="onepasta">
@@ -18,4 +18,4 @@ const index = () => {
     );
 };
 
-export default index;
+export default Pasta;

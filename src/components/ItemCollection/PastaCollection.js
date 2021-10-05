@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import './iteam.css';
-import ProductService from '../../../service/ProductService';
+import './Collection.css';
+import ProductService from '../../service/ProductService';
 
 
-class pastaItem extends React.Component {
+class PastaCollection extends React.Component {
     
     constructor(props){
         super(props)
@@ -52,5 +52,5 @@ class pastaItem extends React.Component {
     }
 }
 
-export default pastaItem;
+export default PastaCollection;
 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import './item.css';
-import ProductService from '../../../service/ProductService';
+import './Collection.css';
+import ProductService from '../../service/ProductService';
 
 
 
 
-class SaladItem extends React.Component {
+class SaladCollection extends React.Component {
     
     constructor(props){
         super(props)
@@ -58,4 +58,4 @@ class SaladItem extends React.Component {
 
 
 }
-export default SaladItem
+export default SaladCollection

@@ -1,18 +1,18 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import Salad from '../components/salad/salad';
-import SaladItem from '../components/salad/saladItem/SaladItem';
+import Salad from '../components/ItemCollectionMainPage/Salad';
+import SaladCollection from '../components/ItemCollection/SaladCollection'
 import Footer from '../components/footer';
 
-const salad = () => {
+const SaladPage = () => {
     return (
         <div>
             <Navigation />
             <Salad />
-            <SaladItem />
+            <SaladCollection />
             <Footer />
         </div>
     );
 };
 
-export default salad;
+export default SaladPage;
