@@ -7,8 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+
 
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
@@ -17,7 +17,6 @@ public class ProductController {
 
     @Autowired
     private ProductServiceInterface productServiceInterface;
-
 
 
     @GetMapping("/product")
@@ -33,32 +32,23 @@ public class ProductController {
     }
 
 
-//    ----------- RequestParam
+    @GetMapping("/product/get")
+    @ResponseBody
+    public ResponseEntity<List<Product>> findByCategories(@RequestParam(required = false) String categories) {
+        List<Product> requestList = null;
 
-    @GetMapping("/product/param")
-    public List<Product> getCategories (@RequestParam (required = false) String categories) {
-        if(categories == null){
-            return  productServiceInterface.getAllProduct();
+        try {
+            requestList = productServiceInterface.findByCategories(categories);
+        } catch (Exception e) {
+            e.getMessage();
         }
-
-        List<Product> productCategories = new ArrayList<>();
-
-        Product product = productServiceInterface.getProductByCategories(categories);
-        productCategories.add(product);
-        return productCategories;
-
-//        List<Product> products = null;
-//
-//        try {
-//            products = productServiceInterface.getAllProduct(categories);
-//        } catch (Exception ex) {
-//            ex.getMessage();
-//        }
-//        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
+        return new ResponseEntity<List<Product>>(requestList, HttpStatus.OK);
 
     }
 
-    @GetMapping("/product/id/{id}")
+
+    @GetMapping("/product/{ProductId}")
+    @ResponseBody
     public ResponseEntity<Product> getIdProduct(@PathVariable("ProductId") int ProductId) {
         Product products = null;
 

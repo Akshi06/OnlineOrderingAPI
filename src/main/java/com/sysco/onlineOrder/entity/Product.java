@@ -18,6 +18,10 @@ public class Product {
     private String productName;
     @Column (name = "productImg")
     private String img;
+    @Column (name = "productDescription")
+    private String productDescription;
+
+
 
     @OneToMany(mappedBy = "product")
     private List<OrderProduct> orderProductList;
@@ -26,17 +30,20 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, double price, String categories, String productName , String img) {
+    public Product(int productId, double price, String categories, String productName , String img , String productDescription) {
         this.productId = productId;
         this.price = price;
         this.categories = categories;
         this.productName = productName;
         this.img = img;
+        this.productDescription =productDescription;
+
     }
 
     public String getImg() {
         return img;
     }
+
 
     public void setImg(String img) {
         this.img = img;
@@ -48,6 +55,14 @@ public class Product {
 
     public void setProductId(int productId) {
         this.productId = productId;
+    }
+
+    public String getProductDescription() {
+        return productDescription;
+    }
+
+    public void setProductDescription(String productDescription) {
+        this.productDescription = productDescription;
     }
 
     public double getPrice() {

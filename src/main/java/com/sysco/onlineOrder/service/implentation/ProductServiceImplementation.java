@@ -8,11 +8,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class ProductServiceImplementation implements ProductServiceInterface {
 
-    static List<Product> products = new ArrayList<>();
+//    static List<Product> products = new ArrayList<>();
 
     @Autowired
     private ProductRepository productRepository;
@@ -20,16 +21,6 @@ public class ProductServiceImplementation implements ProductServiceInterface {
     @Override
     public List<Product> getAllProduct() {
         return (List<Product>) productRepository.findAll();
-    }
-
-    @Override
-    public Product getProductByCategories (String categories) {
-        for (Product product : products){
-            if (product.getCategories().equalsIgnoreCase(categories)){
-                return product;
-            }
-        }
-        return null;
     }
 
     @Override
@@ -49,7 +40,7 @@ public class ProductServiceImplementation implements ProductServiceInterface {
             deleteProduct = productRepository.findById(id).orElse(null);
 
             if (deleteProduct == null) {
-                throw new Exception("Product not found...!");
+                throw new Exception("Product not found");
             } else {
                 productRepository.deleteById(id);
             }
@@ -58,4 +49,22 @@ public class ProductServiceImplementation implements ProductServiceInterface {
         }
         return deleteProduct;
     }
+
+    @Override
+    public List<Product> findByCategories(String categories) {
+
+        List<Product> categoriesList = new ArrayList<>();
+
+        for(Product product : getAllProduct()){
+            if (product.getCategories().equalsIgnoreCase(categories)){
+                categoriesList.add(product);
+            }
+
+        }
+        return categoriesList;
+    }
+
+
+
+
 }
