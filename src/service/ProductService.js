@@ -3,7 +3,7 @@ import axios from "axios";
 const SALAD_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=salad';
 const SOUP_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=soup';
 const PASTA_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=pasta';
-// const PASTA_ID_REST_API_URL = 'http://localhost:8080/v1/online-order/product/{id}';
+// const PASTA_ID_REST_API_URL = 'http://localhost:8080/v1/online-order/product/';
 
 class ProductService {
 
@@ -17,6 +17,9 @@ class ProductService {
     getPasta(){
         return axios.get(PASTA_REST_API_URL);
     }
+    // getSoupItem(){
+    //     return axios.get(PASTA_ID_REST_API_URL);
+    // }
  
 }
 

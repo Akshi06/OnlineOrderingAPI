@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Navigation from '../components/Navigation';
-import Soup from '../components/ItemCollectionMainPage/Soup';
+import Soup from '../components/ItemComponents/Soup';
 import Footer from '../components/footer';
 import { useHistory } from 'react-router-dom';
 

@@ -22,7 +22,7 @@ function App() {
           <Route path = '/SoupPage' exact > <SoupPage/> </Route>
           <Route path = '/PastaPage' exact > <PastaPage/> </Route>
           <Route path = '/SaladPage' exact > <SaladPage/> </Route>
-          <Route exact path="/view-product-details/:productId"><ViewSoupProductDetail/></Route>
+          <Route exact path=":productId"><ViewSoupProductDetail/></Route>
           
         </Switch>
       </Router>

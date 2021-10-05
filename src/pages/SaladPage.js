@@ -1,6 +1,6 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
-import Salad from '../components/ItemCollectionMainPage/Salad';
+import Salad from '../components/ItemComponents/Salad';
 import SaladCollection from '../components/ItemCollection/SaladCollection'
 import Footer from '../components/footer';
 

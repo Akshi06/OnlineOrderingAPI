@@ -1,5 +1,5 @@
 import Navigation from '../components/Navigation';
-import Pasta from '../components/ItemCollectionMainPage/Pasta';
+import Pasta from '../components/ItemComponents/Pasta';
 import PastaCollection from '../components/ItemCollection/PastaCollection';
 import Footer from '../components/footer';
 
