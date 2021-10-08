@@ -7,6 +7,8 @@ import SoupPage from './pages/SoupPage';
 import SaladPage from './pages/SaladPage';
 import ViewSoupProductDetail from './components/ViweProducts/ViewSoupProductDetail';
 
+// import Cart from './components/CartPage/Cart';
+
 
 
 
@@ -15,6 +17,7 @@ import ViewSoupProductDetail from './components/ViweProducts/ViewSoupProductDeta
 function App() {
   return (
     <div className="App">
+      {/* <Cart/> */}
      
       <Router>
         <Switch>
@@ -22,7 +25,7 @@ function App() {
           <Route path = '/SoupPage' exact > <SoupPage/> </Route>
           <Route path = '/PastaPage' exact > <PastaPage/> </Route>
           <Route path = '/SaladPage' exact > <SaladPage/> </Route>
-          <Route exact path=":productId"><ViewSoupProductDetail/></Route>
+          <Route path="/product/:productId" component = {ViewSoupProductDetail}></Route>
           
         </Switch>
       </Router>

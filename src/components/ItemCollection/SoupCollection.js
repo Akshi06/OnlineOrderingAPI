@@ -37,10 +37,7 @@ class SoupCollection extends React.Component {
                                             <div className = 'cardItem'>
                                                 <h3>{soupItem.productName}</h3>
                                                 <h3> Rs:{soupItem.price}</h3>
-                                                <Link to={{
-                                                    pathname:`${soupItem.productId}`,
-                                                    state:{ item:soupItem }
-                                                    }}>
+                                                <Link to={"/product/" + soupItem.productId}>
                                                     <button>Order</button>
                                                 </Link>
                                             </div>

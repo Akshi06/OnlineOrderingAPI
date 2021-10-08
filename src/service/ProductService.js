@@ -1,25 +1,29 @@
-import axios from "axios";
+import Service from "./Service";
 
-const SALAD_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=salad';
-const SOUP_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=soup';
-const PASTA_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=pasta';
-// const PASTA_ID_REST_API_URL = 'http://localhost:8080/v1/online-order/product/';
+
+
+// const SALAD_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=salad';
+// const SOUP_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=soup';
+// const PASTA_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=pasta';
+
 
 class ProductService {
 
     getSalad(){
-       return axios.get(SALAD_REST_API_URL);
+       return Service.get("/product/get?categories=salad");
     }
 
     getSoup(){
-        return axios.get(SOUP_REST_API_URL);
+        return Service.get("/product/get?categories=soup");
     }
     getPasta(){
-        return axios.get(PASTA_REST_API_URL);
+        return Service.get("/product/get?categories=pasta");
     }
-    // getSoupItem(){
-    //     return axios.get(PASTA_ID_REST_API_URL);
-    // }
+
+    get(productId){
+        return Service.get(`/product/${productId}`);
+    }
+    
  
 }
 

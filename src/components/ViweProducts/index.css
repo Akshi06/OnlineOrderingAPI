@@ -1,0 +1,53 @@
+.Content{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-top: 5%;
+   
+}
+
+.column{
+    width: 600px;
+    padding: 10px;
+    
+}
+
+.FirstImg{
+    max-width: 300px;
+    max-height: 400px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+h3{
+    font-size: 20px;
+}
+h1{
+    font-size: 23px;
+}
+h4{
+    font-size: 20px;
+}
+p{
+    font-size: 20px;
+}
+h2{
+    font-size: 23px;
+}
+.section2{
+    margin: auto;
+    position: relative;
+    background: white;
+    padding: 50px;
+    width: 70%;
+    height: auto;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    border-radius: 5px;
+}
+p{
+    color: #000;
+}
+.description{
+    line-height: 1.4;
+}
