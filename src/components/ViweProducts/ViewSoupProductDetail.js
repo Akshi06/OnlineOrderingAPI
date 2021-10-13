@@ -1,7 +1,12 @@
 import React, { Component } from 'react';
+import{Link} from "react-router-dom"
 import ProductService from '../../service/ProductService';
 
+
+
+
 import "./index.css"
+import PostForm from './PostForm';
 
 class ViewSoupProductDetail extends Component {
     constructor(props){
@@ -15,12 +20,15 @@ class ViewSoupProductDetail extends Component {
                 productDescription:"",
                 price:null,
                 img:""
-
-
-
             },
+            name:"React",
             message:""
         };
+        this.onChangeValue = this.onChangeValue.bind(this);
+    }
+
+    onChangeValue(event){
+        console.log(event.target.value);
     }
 
 
@@ -36,14 +44,13 @@ class ViewSoupProductDetail extends Component {
             });
             console.log(response.data)
         })
-        // .catch(e =>{
-        //     console.log(e);
-        // });
     }
 
 
     render() {
         const {soupItem} = this.state;
+        
+       
         return (
             <div>
             {soupItem ? (
@@ -53,9 +60,10 @@ class ViewSoupProductDetail extends Component {
                             <img src={soupItem.img} alt = {soupItem.productId} className = "FirstImg" />
                         </div>                                         
                         <div className = "column">                                     
-                            <h1>Name: {soupItem.productName} </h1>                                      
-                            <h3>Price: {soupItem.price} </h3> 
-                            <h4> Q </h4>
+                            <h1> {soupItem.productName} </h1>                                      
+                            <h3> Rs {soupItem.price} /= </h3> 
+                            < PostForm />
+                    
                         </div>                                     
                     </div>
                     <div className = "section2">                                 
@@ -65,15 +73,12 @@ class ViewSoupProductDetail extends Component {
                         </div>
                     </div>
                 </div>
-               
-        
-          
             ) : (
-              <div>
-                <br />
-                <p>Please click on a Tutorial...</p>
-              </div>
-            )}
+                <div>
+                  <br />
+                  <p>Please click on a Order...</p>
+                </div>
+              )}
           </div>
         );
     }

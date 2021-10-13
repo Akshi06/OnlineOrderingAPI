@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Collection.css';
 import ProductService from '../../service/ProductService';
+import{Link} from "react-router-dom"
 
 
 class PastaCollection extends React.Component {
@@ -39,7 +40,9 @@ class PastaCollection extends React.Component {
                                     <h3>{items.productName}</h3>
                                         <h3> Rs:{items.price}</h3>
                                         
-                                        <button>Order</button>
+                                        <Link to={"/product/" + items.productId}>
+                                                    <button>Order</button>
+                                        </Link>
                                      
                                     </div>
                                 </div>

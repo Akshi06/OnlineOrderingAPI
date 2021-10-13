@@ -1,12 +1,5 @@
 import Service from "./Service";
 
-
-
-// const SALAD_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=salad';
-// const SOUP_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=soup';
-// const PASTA_REST_API_URL = 'http://localhost:8080/v1/online-order/product/get?categories=pasta';
-
-
 class ProductService {
 
     getSalad(){
@@ -22,6 +15,13 @@ class ProductService {
 
     get(productId){
         return Service.get(`/product/${productId}`);
+    }
+    postCutIdAndDate(data){
+        return Service.post(`/order?custId=2`,data)
+    }
+
+    postOrderProduct(orderId , productId ,productQuntity ){
+        return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
     }
     
  

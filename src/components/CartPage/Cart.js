@@ -1,28 +1,108 @@
-import React from 'react';
+
 import'./Cart.css'
+import React, { Component } from 'react';
+import ProductService from '../../service/ProductService';
 
-const Cart = () => {
-    return (
-        <div>
-            <h1>Shopping cart</h1>
-            <table>
-                <tr>
-                    <th>Food Dish</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                </tr>
-                <tr>
-                    <td>soup</td>
-                    <td>Rs:1000</td>
-                    <td>2</td>
-                    <td>2000</td>
-                </tr>
+class Cart extends Component {
+    constructor(props) {
+        super(props);
+      
+        this.retrieveTutorials = this.retrieveTutorials.bind(this);
+        this.refreshList = this.refreshList.bind(this);
+        this.setActiveTutorial = this.setActiveTutorial.bind(this);
+        
+        this.state = {
+          tutorials: [],
+          currentTutorial: null,
+          currentIndex: -1,
+          searchTitle: ""
+        };
+      }
+    
+      componentDidMount() {
+        this.retrieveTutorials();
+      }
+    
+    
+      retrieveTutorials() {
+        ProductService.addTOCart()
+          .then(response => {
+            this.setState({
+              tutorials: response.data
+            });
+            console.log(response.data);
+          })
+          .catch(e => {
+            console.log(e);
+          });
+      }
+    
+      refreshList() {
+        this.retrieveTutorials();
+        this.setState({
+          currentTutorial: null,
+          currentIndex: -1
+        });
+      }
+    
+      setActiveTutorial(tutorial, index) {
+        this.setState({
+          currentTutorial: tutorial,
+          currentIndex: index
+        });
+      }
+    
+    
 
-            </table>
-            
+    render() {
+        const {  currentTutorial } = this.state;
+        return (
+            <div className="list row">
+                 
+                <div className="col-md-6">
+
+                <button
+                    className="m-3 btn btn-sm btn-danger"
+                    onClick={this.removeAllTutorials}
+                >
+                    Remove All
+                </button>
+             </div>
+        <div className="col-md-6">
+          {currentTutorial ? (
+            <div>
+              <h4>Tutorial</h4>
+              <div>
+                <label>
+                  <strong>Title:</strong>
+                </label>{" "}
+                {currentTutorial.invoiceNo}
+              </div>
+              <div>
+                <label>
+                  <strong>Description:</strong>
+                </label>{" "}
+                {currentTutorial.orderProduct}
+              </div>
+
+              {/* <Link
+                to={"/tutorials/" + currentTutorial.id}
+                className="badge badge-warning"
+              >
+                Edit
+              </Link> */}
+            </div>
+          ) : (
+            <div>
+              <br />
+              <p>Please click on a order...</p>
+            </div>
+          )}
         </div>
-    );
-};
+      </div>
+        );
+    }
+}
 
 export default Cart;
+
