@@ -36,7 +36,7 @@ class SaladCollection extends React.Component {
                         
                             this.state.item.map(
                                 items =>
-                                        <h3 key = {items.categories}>
+                                        <h3 key = {items.productId}>
                                                 <div className = 'card'>
                                                     <img src={items.img} alt={items.productName} className='itemImg'/>
                                                     <div className = 'cardItem'>

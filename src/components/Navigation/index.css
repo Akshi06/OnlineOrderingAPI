@@ -4,8 +4,20 @@
     margin-left: 5%;
     float: left;
 }
-.logo{
+.nav{
     box-sizing: border-box;
     background-color:rgb(65, 64, 64);
     height: 70px;
+}
+.viweCartBtn{
+    width:100px;  
+    height: 25px;
+    background-color: whitesmoke;
+}
+.navBtn{
+    margin-top: 1.5%;
+    margin-left: 80%;
+}
+i{
+    color:rgb(255, 99, 37);
 }

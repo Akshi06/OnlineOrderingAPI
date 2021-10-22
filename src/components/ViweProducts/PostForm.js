@@ -8,7 +8,11 @@ class PostForm extends Component {
     this.onChangeQuntity = this.onChangeQuntity.bind(this);
     this.saveQuntity = this.saveQuntity.bind(this);
     this.state = {
-      quntity:[]
+      productId:1,
+      orderId:1,
+      productQuntity:null
+
+
     };
   }
   
@@ -20,17 +24,16 @@ class PostForm extends Component {
     
   saveQuntity() {
       var data = {
-        productQuntity: this.state.productQuntity,
-          
+        productQuntity: this.state.productQuntity,       
   };
     
   ProductService.postOrderProduct(this.state.orderId , this.state.productId ,this.state.productQuntity)
     .then(response => {
       this.setState({
-      orderProduct_id: response.data.orderProduct_id,
-      productQuantity: response.data.productQuantity,
-      orderDetail: response.data.orderId,
-      product:response.data.productId,
+      orderProduct_id: response.orderProduct_id,
+      productQuantity: response.productQuantity,
+      orderDetail: response.orderId,
+      productId:response.productId,
        submitted: true
     });
     console.log(response.data);
@@ -40,11 +43,11 @@ class PostForm extends Component {
   });
     
 
-  ProductService.postCutIdAndDate(data)
+  ProductService.postCutIdAndDate()
     .then(response => {
       this.setState({
-        id:response.data.orderId,
-        orderDate: response.data.orderDate,
+        id:response.orderId,
+        orderDate: response.orderDate,
       submitted : true
       });
       console.log(response.data);
@@ -73,6 +76,7 @@ class PostForm extends Component {
                 onChange={this.onChangeQuntity}
                 name="productQuntity"
               />
+
             </div>
             <Link >
               <button onClick={this.saveQuntity} className="btn btn-success">

@@ -1,12 +1,25 @@
-table{
-    width: 70%;
-    border: 1px solid black;
-    /* justify-content: space-between; */
-
+.th1 , .td1{
+    width: 50%;
 }
-td{
-    display: table-cell;
-    vertical-align: inherit;
-    font-weight: bold;
-    text-align: -internal-center;
+.th2 , .td2{
+    width: 10%;
 }
+.th3  , .td3{
+    width: 8%;
+}
+.th4 {
+    width: 22%;
+}
+.th5 , .td5{
+    width: 10%;
+}
+/* .td1 .td{
+    width: 50%;
+} */
+/* 
+.table{
+    width: 100%;
+}
+.td4{
+    width: 20%;
+} */
