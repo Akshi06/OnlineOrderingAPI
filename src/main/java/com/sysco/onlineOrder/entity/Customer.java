@@ -11,10 +11,13 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerId")
     private int cusId;
+
     @Column(name = "customerName")
     private String customer_name;
+
     @Column(name = "customerEmail")
     private String customer_email;
+
     @Column(name = "customerPhoneNumber")
     private int customer_phone;
 

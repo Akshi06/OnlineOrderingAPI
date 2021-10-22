@@ -61,7 +61,7 @@ public class CustomerServiceImplementation implements CustomerServiceInterface {
             delCustomerClass = customerRepository.findById(id);
 
             if (delCustomerClass == null) {
-                throw new Exception("Customer not found...!");
+                throw new Exception("Customer not found");
             } else {
                 customerRepository.deleteById(id);
             }

@@ -11,12 +11,16 @@ public class CustomerAddress {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customerAddressId")
     private int cusAddressId;
+
     @Column(name = "zipCode")
     private int zipCode;
+
     @Column(name = "street")
     private String street;
+
     @Column(name = "city")
     private String city;
+
     @Column(name = "state")
     private String state;
 

@@ -43,7 +43,8 @@ public class OrderController {
 
 
     /**
-     * take data in to database and generator the date
+     * post the data in to database
+     * generator the date
      *
      * @param cusId
      * @return

@@ -53,7 +53,7 @@ public class PaymentServiceImplementation implements PaymentServiceInterface {
             delPaymentClass = paymentRepository.findById(invoice_id);
 
             if (delPaymentClass == null) {
-                throw new Exception("Payment not found...!");
+                throw new Exception("Payment not found");
             } else {
                 paymentRepository.deleteById(invoice_id);
             }

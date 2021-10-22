@@ -10,8 +10,10 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invoiceId")
     private int invoiceNo;
+
     @Column(name = "totalAmount")
     private int totalPayment;
+
     @Column(name = "paymentDate")
     private Date paymentDate;
 
