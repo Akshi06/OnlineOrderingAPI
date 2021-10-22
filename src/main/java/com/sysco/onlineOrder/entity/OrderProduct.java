@@ -40,6 +40,9 @@ public class OrderProduct {
         return orderDetail;
     }
 
+    public void setOrderDetail(Order orderDetail) {
+        this.orderDetail = orderDetail;
+    }
 
     public Product getProduct() {
         return product;

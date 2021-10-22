@@ -12,18 +12,9 @@ public class Payment {
     private int invoiceNo;
     @Column(name = "totalAmount")
     private int totalPayment;
-    @Column(name = "paymentMethod")
-    private String paymentMethod;
     @Column(name = "paymentDate")
     private Date paymentDate;
-//
-//    @OneToOne
-//    @JoinColumn(name = "order_product_id")
-//    private OrderProduct order_product;
 
-    //    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "order_product_id")
-//    private OrderProduct order_product;
     @OneToOne
     @JoinColumn(name = "orderProductId")
     private OrderProduct orderProduct;
@@ -32,10 +23,9 @@ public class Payment {
 
     }
 
-    public Payment(int invoiceNo, int totalPayment, String paymentMethod, Date paymentDate, OrderProduct orderProduct) {
+    public Payment(int invoiceNo, int totalPayment, Date paymentDate, OrderProduct orderProduct) {
         this.invoiceNo = invoiceNo;
         this.totalPayment = totalPayment;
-        this.paymentMethod = paymentMethod;
         this.paymentDate = paymentDate;
         this.orderProduct = orderProduct;
 
@@ -63,14 +53,6 @@ public class Payment {
 
     public void setTotalPayment(int totalPayment) {
         this.totalPayment = totalPayment;
-    }
-
-    public String getPaymentMethod() {
-        return paymentMethod;
-    }
-
-    public void setPaymentMethod(String paymentMethod) {
-        this.paymentMethod = paymentMethod;
     }
 
     public Date getPaymentDate() {

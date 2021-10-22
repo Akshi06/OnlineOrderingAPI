@@ -17,8 +17,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
-//	compile("org.springframework.boot:spring-boot-starter-data-rest")
-//	compile group: 'com.zaxxer', name: 'HikariCP', version: '3.4.1'
 }
 
 test {

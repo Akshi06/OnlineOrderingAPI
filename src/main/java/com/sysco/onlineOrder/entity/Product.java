@@ -16,11 +16,10 @@ public class Product {
     private String categories;
     @Column(name = "productName")
     private String productName;
-    @Column (name = "productImg")
+    @Column(name = "productImg")
     private String img;
-    @Column (name = "productDescription")
+    @Column(name = "productDescription")
     private String productDescription;
-
 
 
     @OneToMany(mappedBy = "product")
@@ -30,13 +29,13 @@ public class Product {
     public Product() {
     }
 
-    public Product(int productId, double price, String categories, String productName , String img , String productDescription) {
+    public Product(int productId, double price, String categories, String productName, String img, String productDescription) {
         this.productId = productId;
         this.price = price;
         this.categories = categories;
         this.productName = productName;
         this.img = img;
-        this.productDescription =productDescription;
+        this.productDescription = productDescription;
 
     }
 

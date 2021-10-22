@@ -7,9 +7,9 @@ import java.util.List;
 public interface CustomerServiceInterface {
     List<Customer> getAllCustomer();
 
-    Customer getIdCustomer(int id);
+    List<Customer> getIdCustomer(int id);
 
     Customer add(Customer customers);
 
-    Customer deleteCustomer(int id);
+    List<Customer> deleteCustomer(int id);
 }

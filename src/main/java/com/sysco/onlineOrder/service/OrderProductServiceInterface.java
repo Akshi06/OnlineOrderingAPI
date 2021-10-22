@@ -7,8 +7,8 @@ import java.util.List;
 public interface OrderProductServiceInterface {
     List<OrderProduct> getAllOrderProduct();
 
-    OrderProduct add(OrderProduct orderProduct);
+    List<OrderProduct> getById(int orderProductId);
 
-//    OrderProduct deleteOrderProduct(int id);
+    OrderProduct add(OrderProduct orderProduct);
 
 }

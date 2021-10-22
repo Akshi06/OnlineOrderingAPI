@@ -16,7 +16,12 @@ public class OrderProductServiceImplementation implements OrderProductServiceInt
 
     @Override
     public List<OrderProduct> getAllOrderProduct() {
-        return (List<OrderProduct>) orderProductRepository.findAll();
+        return orderProductRepository.findAll();
+    }
+
+    @Override
+    public List<OrderProduct> getById(int orderProductId) {
+        return orderProductRepository.findById(orderProductId);
     }
 
     @Override

@@ -27,7 +27,6 @@ public class Customer {
     private List<Order> orderList;
 
 
-
     public Customer() {
     }
 
@@ -79,7 +78,6 @@ public class Customer {
     public void setAddress(CustomerAddress address) {
         this.customerAddress = address;
     }
-
 
 
 }

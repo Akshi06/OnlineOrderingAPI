@@ -3,68 +3,51 @@ package com.sysco.onlineOrder.service.implentation;
 import com.sysco.onlineOrder.entity.Product;
 import com.sysco.onlineOrder.repository.ProductRepository;
 import com.sysco.onlineOrder.service.ProductServiceInterface;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Service
 public class ProductServiceImplementation implements ProductServiceInterface {
-
-//    static List<Product> products = new ArrayList<>();
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImplementation.class);
 
     @Autowired
     private ProductRepository productRepository;
 
     @Override
     public List<Product> getAllProduct() {
-        return (List<Product>) productRepository.findAll();
+        return productRepository.findAll();
     }
 
     @Override
-    public Product getIdProduct(int ProductId) {
-        return productRepository.findById(ProductId).orElse(null);
+    public List<Product> getIdProduct(int productId) {
+        return productRepository.findById(productId);
     }
+
 
     @Override
     public Product add(Product product) {
         return productRepository.save(product);
     }
 
-    @Override
-    public Product deleteProduct(int id) {
-        Product deleteProduct = null;
-        try {
-            deleteProduct = productRepository.findById(id).orElse(null);
-
-            if (deleteProduct == null) {
-                throw new Exception("Product not found");
-            } else {
-                productRepository.deleteById(id);
-            }
-        } catch (Exception e) {
-            System.out.println("ProductServiceImplementation.java");
-        }
-        return deleteProduct;
-    }
 
     @Override
     public List<Product> findByCategories(String categories) {
 
         List<Product> categoriesList = new ArrayList<>();
 
-        for(Product product : getAllProduct()){
-            if (product.getCategories().equalsIgnoreCase(categories)){
+        for (Product product : getAllProduct()) {
+            if (product.getCategories().equalsIgnoreCase(categories)) {
                 categoriesList.add(product);
             }
 
         }
         return categoriesList;
     }
-
-
 
 
 }
