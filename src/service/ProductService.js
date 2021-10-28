@@ -3,28 +3,29 @@ import Service from "./Service";
 class ProductService {
 
     getSalad(){
-       return Service.get("/product/get?categories=salad");
+       return Service.get("/products/category?categories=salad");
     }
 
     getSoup(){
-        return Service.get("/product/get?categories=soup");
+        return Service.get("/products/category?categories=soup");
     }
     getPasta(){
-        return Service.get("/product/get?categories=pasta");
+        return Service.get("/products/category?categories=pasta");
     }
 
     get(productId){
-        return Service.get(`/product/${productId}`);
+        return Service.get(`/products/${productId}`);
     }
-    postCutIdAndDate(){
-        return Service.post(`/order?custId=5`,)
-    }
+    // postCutIdAndDate(){
+        // return Service.post(`/order?custId=5`,)
+    // }
 
-    postOrderProduct(orderId , productId ,productQuntity ){
-        return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
-    }
-    getOrderProduct(orderProduct_id){
-        return Service.get(`/OrderProduct/${orderProduct_id}`)
+    // postOrderProduct(orderId , productId ,productQuntity ){
+    //     return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
+    // }
+
+    postPaymentDetail(){
+        return Service.post(`/payment`)
     }
     
  

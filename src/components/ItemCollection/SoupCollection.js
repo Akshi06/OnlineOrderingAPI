@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Collection.css';
 import ProductService from '../../service/ProductService';
 import{Link} from "react-router-dom"

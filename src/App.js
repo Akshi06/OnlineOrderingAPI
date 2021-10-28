@@ -6,11 +6,11 @@ import Main from './pages/main';
 import SoupPage from './pages/SoupPage';
 import SaladPage from './pages/SaladPage';
 import ViewProductDetail from './components/ViweProducts/ViewProductDetail';
-import Cart from './components/CartPage/Cart'
-import LoginPage from './components/LoginPage/login';
+
+// import LoginPage from './components/LoginPage/login';
 
 
-// import Cart from './components/CartPage/Cart';
+import Cart from './components/CartPage/Cart';
 
 
 
@@ -30,7 +30,7 @@ function App() {
           <Route path = '/PastaPage' exact > <PastaPage/> </Route>
           <Route path = '/SaladPage' exact > <SaladPage/> </Route>
           <Route path="/product/:productId" component = {ViewProductDetail}></Route>
-          <Route path="/Cart/:orderProduct_id" component ={Cart}></Route>
+          <Route path = "/cart"><Cart /></Route>
 
           
         </Switch>
