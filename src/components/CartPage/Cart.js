@@ -43,7 +43,19 @@ class Cart extends Component {
 				<div className="container">
 					<h1>YUMMY TUMMY CART</h1>
 				</div>
-				<CartPart />
+				<table id="cart" className="table table-hover table-condensed">
+					<thead>
+						<tr>
+							<th className="th1">Product</th>
+							<th className="th2">Price</th>
+							<th className="th3">Quantity</th>
+							<th  className="th4">Subtotal</th>
+							<th className="th5"></th>
+						</tr>
+					</thead>
+					<CartPart />
+				</table>
+				
 				
 		</div>
     );

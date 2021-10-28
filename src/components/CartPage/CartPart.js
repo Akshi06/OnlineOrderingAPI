@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Cart.css";
 
 function CartPart() {
     let A = JSON.parse(localStorage.allItem)
@@ -8,31 +9,22 @@ function CartPart() {
         return (
             <div>
                 <table id="cart" className="table table-hover table-condensed">
-					<thead>
-						<tr>
-							<th className="th1">Product</th>
-							<th className="th2">Price</th>
-							<th className="th3">Quantity</th>
-							<th  className="th4">Subtotal</th>
-							<th className="th5"></th>
-						</tr>
-						</thead>
 							<tbody>
 								<tr>
 									<td data-th="Product">
 										<div className="row">
-											<div className="col-sm-2 hidden-xs"><img src="" alt="..." className="img-responsive"/></div>
+											<div className="col-sm-2 hidden-xs"><img src={A[i].soupItem.img} alt="..." className="img-responsive"/></div>
 											<div className="col-sm-10">
-												<h4 className="nomargin">pk</h4>
-												<p>dis</p>
+												<h4 className="nomargin">{A[i].soupItem.productName}</h4>
+												<p>{A[i].soupItem.productDescription}</p>
 											</div>
 										</div>
 									</td>
-									<td data-th="Price">price</td>
+									<td data-th="Price"> Rs:{A[i].soupItem.price}</td>
 									<td data-th="Quantity">
-										<p className="form-control text-center">q</p>
+										<p className="form-control text-center">{A[i].productQuntity}</p>
 									</td>
-									<td data-th="Subtotal" className="text-center">1.99</td>
+									<td  data-th="Subtotal" className="text-center">1.99</td>
 										{/* <td class="actions" data-th="">
 											<button class="btn btn-info btn-sm"><i class="fa fa-refresh"></i></button>
 											<button class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i></button>								
