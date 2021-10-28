@@ -7,31 +7,31 @@ import CartPart from './CartPart';
 
 class Cart extends Component {
 
-	constructor(props){
-		super(props);
-		this.getItem = this.getItem.bind(this);
+	// constructor(props){
+	// 	super(props);
+	// 	this.getItem = this.getItem.bind(this);
 
-		this.state = {soupItem:[]}
-	}
+	// 	this.state = {soupItem:[]}
+	// }
 
-	componentDidMount(){
-		this.getItem();
+	// componentDidMount(){
+	// 	this.getItem();
 		
-	}
+	// }
 
-	getItem(){
+	// getItem(){
 		 
-		 this.setState({
-			 SelectedItem:JSON.parse(window.localStorage.getItem("allItem"))
+	// 	 this.setState({
+	// 		 SelectedItem:JSON.parse(window.localStorage.getItem("allItem"))
 			
-		 })
-		 let A = JSON.parse(localStorage.allItem)
-		 console.log(A[1].soupItem.productId);
-		 for(let i = 1; i < A.length ; i++){
-			 console.log(A[i].soupItem.productName);
-		 }
+	// 	 })
+	// 	 let A = JSON.parse(localStorage.allItem)
+	// 	 console.log(A[1].soupItem.productId);
+	// 	 for(let i = 1; i < A.length ; i++){
+	// 		 console.log(A[i].soupItem.productName);
+	// 	 }
 		
-	}
+	// }
 	
 
 
@@ -53,7 +53,19 @@ class Cart extends Component {
 							<th className="th5"></th>
 						</tr>
 					</thead>
-					<CartPart />
+					<tbody>
+						<CartPart />
+					</tbody>
+					<tfoot>
+									{/* <tr cclassNamelass="visible-xs">
+										<td className="text-center"><strong>Total 1.99</strong></td>
+									</tr> */}
+						<tr>
+							<td colSpan="3" className="hidden-xs"></td>
+							<td className="hidden-xs text-center"><strong>Total $1.99</strong></td>
+						</tr>
+					</tfoot>
+					
 				</table>
 				
 				
