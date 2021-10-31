@@ -1,17 +1,17 @@
 .th1 , .td1{
-    width: 50%;
+    width: 30%;
 }
 .th2 , .td2{
-    width: 10%;
-}
-.th3  , .td3{
     width: 8%;
 }
+.th3  , .td3{
+    width: 5%;
+}
 .th4 {
-    width: 22%;
+    width: 1%;
 }
 .th5 , .td5{
-    width: 10%;
+    width: 9%;
 }
 /* .td1 .td{
     width: 50%;
