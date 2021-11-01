@@ -1,6 +1,7 @@
 import React from 'react';
 import "./Cart.css";
 import ProductService from '../../service/ProductService';
+import{Link} from "react-router-dom";
 
 function CartPart() {
 
@@ -124,7 +125,10 @@ function CartPart() {
                    
 					
 				</table>
-                <button>Pay</button>
+                <Link to ="/customer-login">
+                     <button className="cartBtn">Pay</button>
+                </Link>
+              
             </div>
         );
 }

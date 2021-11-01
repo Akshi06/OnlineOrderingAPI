@@ -5,11 +5,11 @@ const Nav = () => {
             <>
                 <div className= 'nav'>
                     <div className='logo'>
-                        <img src="../image/logo.png" alt="Logo" className="logoImg"/>
+                        <img src="../image/logo.gif" alt="Logo" className="logoImg"/>
                        
                     </div>
                     <div className = "navBtn">
-                    <Link to={"/Cart"}>
+                    <Link to={"/cart-page"}>
                              <button className="viweCartBtn"><i className="fa fa-shopping-cart"></i></button>
                     </Link>
                         

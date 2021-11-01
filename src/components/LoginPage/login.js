@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import "./Signup.css"
 
 class login extends Component {
@@ -17,9 +18,9 @@ class login extends Component {
                     <label>Email address</label>
                     <input type="email" className="form-control" placeholder="Enter email" />
                 </div>
-                <button type="submit" className="singupBtn ">Login</button>
+                <Link to="/cart-page"><button type="submit" className="singupBtn ">Login</button></Link>
                 <p className="forgot-password ">
-                    Already registered 
+                    You didn't have account yet <Link to="/customer-signup-page" className="loginLink">Signup</Link>
                 </p>
 
             </form>
