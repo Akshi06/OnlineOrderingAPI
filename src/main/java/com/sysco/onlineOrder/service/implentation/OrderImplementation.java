@@ -2,14 +2,14 @@ package com.sysco.onlineOrder.service.implentation;
 
 import com.sysco.onlineOrder.entity.Order;
 import com.sysco.onlineOrder.repository.OrderRepository;
-import com.sysco.onlineOrder.service.OrderServiceInterface;
+import com.sysco.onlineOrder.service.OrderInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class OrderServiceImplementation implements OrderServiceInterface {
+public class OrderImplementation implements OrderInterface {
 
     @Autowired
     private OrderRepository orderRepository;
@@ -23,27 +23,32 @@ public class OrderServiceImplementation implements OrderServiceInterface {
         return orderRepository.findAll();
     }
 
-    /**
-     * save the data in db
-     *
-     * @param order
-     * @return
-     */
 
+    /**
+     * add the order
+     *
+     * @param order order
+     * @return {@link List}
+     * @see List
+     * @see Order
+     */
     @Override
-    public List<Order> add(Order order) {
+    public List<Order> addTheOrder(Order order) {
         return (List<Order>) orderRepository.save(order);
     }
 
+
     /**
-     * take orders using order id
+     *  take orders using order id
      *
-     * @param OrderId
-     * @return
+     * @param OrderId OrderId
+     * @return {@link List}
+     * @see List
+     * @see Order
      */
 
     @Override
-    public List<Order> getOrderId(int OrderId) {
+    public Order getOrderId(int OrderId) {
         return orderRepository.findById(OrderId);
     }
 }

@@ -2,8 +2,8 @@ package com.sysco.onlineOrder.controller;
 
 import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.Order;
-import com.sysco.onlineOrder.service.CustomerServiceInterface;
-import com.sysco.onlineOrder.service.OrderServiceInterface;
+import com.sysco.onlineOrder.service.CustomerInterface;
+import com.sysco.onlineOrder.service.OrderInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,18 +22,20 @@ import java.util.List;
 
 public class OrderController {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderController.class);
+
     @Autowired
-    private OrderServiceInterface orderServiceInterface;
+    private OrderInterface orderInterface;
+
     @Autowired
-    private CustomerServiceInterface customerServiceInterface;
+    private CustomerInterface customerInterface;
+
 
     @GetMapping("/orders")
-//    take all order
     public ResponseEntity<List<Order>> getAllOrder() {
         List<Order> orders = null;
         try {
-            orders = orderServiceInterface.getAllOrder();
+            orders = orderInterface.getAllOrder();
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
@@ -42,20 +44,21 @@ public class OrderController {
     }
 
 
-    /**
-     * post the data in to database
-     * generator the date
-     *
-     * @param cusId
-     * @return
-     */
 
+    /**
+     * add the order
+     *
+     * @param cusId cusId
+     * @return {@link ResponseEntity}
+     * @see ResponseEntity
+     * @see List
+     */
     @PostMapping("/orders")
     @ResponseBody
-    public ResponseEntity<List<Order>> add(@RequestParam(required = false) int cusId) {
+    public ResponseEntity<List<Order>> addTheOrder(@RequestParam(required = false) int cusId) {
 
 //        take customerId
-        Customer customer = (Customer) customerServiceInterface.getIdCustomer(cusId);
+        Customer customer = (Customer) customerInterface.getCustomerById(cusId);
 
         List<Order> PlaceOrder = null;
         Order order = new Order();
@@ -69,7 +72,7 @@ public class OrderController {
         order.setOrderDate(date);
 
         try {
-            PlaceOrder = orderServiceInterface.add(order);
+            PlaceOrder = orderInterface.addTheOrder(order);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }

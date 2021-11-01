@@ -9,10 +9,10 @@ import java.util.List;
 public class CustomerAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "customerAddressId")
+    @Column(name = "customer_address_id")
     private int cusAddressId;
 
-    @Column(name = "zipCode")
+    @Column(name = "zip_code")
     private int zipCode;
 
     @Column(name = "street")

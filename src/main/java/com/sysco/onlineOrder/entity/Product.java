@@ -8,22 +8,23 @@ import java.util.List;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "productId")
+    @Column(name = "product_id")
     private int productId;
 
-    @Column(name = "productPrice")
+    @Column(name = "product_price")
     private double price;
 
-    @Column(name = "productCategories")
+    @Column(name = "product_categories")
     private String categories;
+    // Category
 
-    @Column(name = "productName")
+    @Column(name = "product_name")
     private String productName;
 
-    @Column(name = "productImg")
+    @Column(name = "product_img")
     private String img;
 
-    @Column(name = "productDescription")
+    @Column(name = "product_description")
     private String productDescription;
 
 

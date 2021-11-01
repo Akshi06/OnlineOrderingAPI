@@ -5,10 +5,10 @@ import com.sysco.onlineOrder.entity.Product;
 import java.util.List;
 
 
-public interface ProductServiceInterface {
+public interface ProductInterface {
     List<Product> getAllProduct();
 
-    List<Product> getIdProduct(int productId);
+   Product getProductById (int productId);
 
     Product add(Product product);
 

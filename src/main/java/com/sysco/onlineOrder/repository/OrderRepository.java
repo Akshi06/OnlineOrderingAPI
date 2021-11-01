@@ -17,7 +17,7 @@ public interface OrderRepository extends JpaRepository<Order, Integer> {
     @Transactional
     @Modifying
     @Query(value = " FROM Order WHERE orderId =?1")
-    List<Order> findById(int orderId);
+    Order findById(int orderId);
 
 
 }

@@ -8,17 +8,17 @@ import java.util.Date;
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "invoiceId")
+    @Column(name = "invoice_id")
     private int invoiceNo;
 
-    @Column(name = "totalAmount")
+    @Column(name = "total_amount")
     private int totalPayment;
 
-    @Column(name = "paymentDate")
+    @Column(name = "payment_date")
     private Date paymentDate;
 
     @OneToOne
-    @JoinColumn(name = "orderProductId")
+    @JoinColumn(name = "order_product_id")
     private OrderProduct orderProduct;
 
     public Payment() {

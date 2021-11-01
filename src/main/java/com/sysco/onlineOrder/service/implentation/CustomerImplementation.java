@@ -2,7 +2,7 @@ package com.sysco.onlineOrder.service.implentation;
 
 import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.repository.CustomerRepository;
-import com.sysco.onlineOrder.service.CustomerServiceInterface;
+import com.sysco.onlineOrder.service.CustomerInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,52 +11,59 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerServiceImplementation implements CustomerServiceInterface {
+public class CustomerImplementation implements CustomerInterface {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(ProductServiceImplementation.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ProductImplementation.class);
 
 
     @Autowired
     private CustomerRepository customerRepository;
 
 
+
     /**
-     * take all customers
+     * get all customer
      *
-     * @return
+     * @return {@link List}
+     * @see List
+     * @see Customer
      */
     @Override
     public List<Customer> getAllCustomer() {
         return customerRepository.findAll();
     }
 
-    /**
-     * take customer by using cusId
-     *
-     * @param id
-     * @return
-     */
 
+    /**
+     * get customer by id
+     *
+     * @param id id
+     * @return {@link List}
+     * @see List
+     * @see Customer
+     */
     @Override
-    public List<Customer> getIdCustomer(int id) {
+    public Customer getCustomerById(int id) {
         return customerRepository.findById(id);
     }
 
     @Override
-    public Customer add(Customer customers) {
+    public Customer addTheCustomer(Customer customers) {
         return customerRepository.save(customers);
     }
 
-    /**
-     * delete the customer by using cusId
-     *
-     * @param id
-     * @return
-     */
 
+    /**
+     * delete customer
+     *
+     * @param id id
+     * @return {@link List}
+     * @see List
+     * @see Customer
+     */
     @Override
-    public List<Customer> deleteCustomer(int id) {
-        List<Customer> delCustomerClass = null;
+    public Customer deleteCustomer(int id) {
+        Customer delCustomerClass = null;
         try {
             delCustomerClass = customerRepository.findById(id);
 

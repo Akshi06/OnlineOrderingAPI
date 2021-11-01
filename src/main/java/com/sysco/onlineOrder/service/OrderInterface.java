@@ -4,12 +4,12 @@ import com.sysco.onlineOrder.entity.Order;
 
 import java.util.List;
 
-public interface OrderServiceInterface {
+public interface OrderInterface {
     List<Order> getAllOrder();
 
-    List<Order> add(Order order);
+    List<Order> addTheOrder(Order order);
 
-    List<Order> getOrderId(int OrderId);
+    Order getOrderId(int OrderId);
 
 
 }

@@ -21,6 +21,13 @@ public interface ProductRepository extends JpaRepository<Product, Integer> {
     @Transactional
     @Modifying
     @Query(value = " FROM Product WHERE productId =?1")
-    List<Product> findById(int ProductId);
+     Product findById(int ProductId);
+
+    @Transactional
+    @Modifying
+    @Query(value = " FROM Product WHERE categories =?1")
+    List<Product> findByCategories (String categories);
+
+
 
 }
