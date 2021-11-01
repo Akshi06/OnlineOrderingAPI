@@ -1,10 +1,85 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import { Link } from 'react-router-dom';
+import ProductService from "../../service/ProductService";
 
 import "./Signup.css"
 
-class Singup extends Component {
-    render() {
+const Singup = () =>{
+
+    // const initialCustomer = {
+    //     customerId:null,
+    //     name:"",
+    //     mail:"",
+    //     phoneNumber:null,
+       
+    // };
+    // const initialAddress ={
+    //     addressId:null,
+    //     zip:null,
+    //     street:"",
+    //     city:"",
+    //     state:""
+    // }
+
+    // const[customer, setCutomer] = useState(initialCustomer);
+    // const[address, setAddress] = useState(initialAddress);
+    // const[submit,setSubmitted] = useState(false);
+
+
+    // const saveCustomer = () =>{
+    //     var data = {
+    //         name:customer.name,
+    //         mail:customer.mail,
+    //         phoneNumber:customer.phoneNumber,
+    //         zip:customer.zipCode,
+    //         street:customer.street,
+    //         city:customer.city,
+    //         state:customer.state
+    //     }
+    // }
+
+    // ProductService.postTheAddress(data)
+    //     .then(res =>{
+    //         setAddress({
+    //             addressId:res.data.addressId,
+    //             zip:res.data.zipCode,
+    //             street:res.data.street,
+    //             city:res.data.city,
+    //             state:res.data.state
+    //         });
+
+    //         ProductService.postTheCustomer(res.data.addressId,data)
+    //         .then(response => {
+    //             setCutomer({
+    //                 addressId:res.data.addressId,
+    //                 customerId:response.data.customerId,
+    //                 name:response.data.name,
+    //                 mail:response.data.mail,
+    //                 phoneNumber:response.data.phoneNumber,
+    //             })
+    //             setSubmitted(true);
+    //             console.log(response.data)
+    //             console.log(res.data)
+    
+    //         })
+
+           
+    //     })
+    //     .catch(e =>{
+    //         console.log(e);
+    //     })
+
+    //     const newCustomer = () => {
+    //         setCutomer(initialCustomer);
+    //         setAddress(initialAddress);
+    //         setSubmitted(false);
+    //     }
+
+
+
+
+
+
         return (
             <div className="signup-bg">
                 <div className="singupContainer"> 
@@ -13,7 +88,7 @@ class Singup extends Component {
 
                         <div className="form-group">
                             <label> Name</label>
-                            <input type="text" className="form-control" placeholder="Name" />
+                            <input type="text" className="form-control" placeholder="Name"  />
                         </div>
 
                         <div className="form-group">
@@ -51,7 +126,7 @@ class Singup extends Component {
             
         );
     }
-}
+
 
 export default Singup;
 

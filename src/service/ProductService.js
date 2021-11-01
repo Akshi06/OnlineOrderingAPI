@@ -16,9 +16,12 @@ class ProductService {
     get(productId){
         return Service.get(`/products/${productId}`);
     }
-    // postCutIdAndDate(){
-        // return Service.post(`/order?custId=5`,)
-    // }
+    postTheCustomer(data){
+        return Service.post(`/customer`, data)
+    }
+    postTheAddress(data){
+        return Service.post(`/customer-address`, data)
+    }
 
     // postOrderProduct(orderId , productId ,productQuntity ){
     //     return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
