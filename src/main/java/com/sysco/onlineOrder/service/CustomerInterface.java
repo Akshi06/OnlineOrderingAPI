@@ -11,5 +11,5 @@ public interface CustomerInterface {
 
     Customer addTheCustomer(Customer customers);
 
-    Customer deleteCustomer(int id);
+
 }

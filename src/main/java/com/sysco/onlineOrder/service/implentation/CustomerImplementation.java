@@ -44,7 +44,7 @@ public class CustomerImplementation implements CustomerInterface {
      */
     @Override
     public Customer getCustomerById(int id) {
-        return customerRepository.findById(id);
+        return customerRepository.findByCustomerId(id);
     }
 
     @Override
@@ -53,28 +53,4 @@ public class CustomerImplementation implements CustomerInterface {
     }
 
 
-    /**
-     * delete customer
-     *
-     * @param id id
-     * @return {@link List}
-     * @see List
-     * @see Customer
-     */
-    @Override
-    public Customer deleteCustomer(int id) {
-        Customer delCustomerClass = null;
-        try {
-            delCustomerClass = customerRepository.findById(id);
-
-            if (delCustomerClass == null) {
-                throw new Exception("Customer not found");
-            } else {
-                customerRepository.deleteById(id);
-            }
-        } catch (Exception e) {
-            LOGGER.error("CustomerServiceImplementation.java");
-        }
-        return delCustomerClass;
-    }
 }

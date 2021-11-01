@@ -21,11 +21,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> , C
     @Transactional
     @Modifying
     @Query(value = " FROM Customer WHERE cusId =?1")
-    Customer findById(int id);
-
-    @Modifying
-    @Query(value = "DELETE FROM Customer WHERE cusId =?1")
-    List<Customer> deleteById(int id);
-
+    Customer findByCustomerId(int id);
 
 }
