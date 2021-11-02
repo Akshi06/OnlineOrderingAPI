@@ -99,6 +99,7 @@ class ViewProductDetail extends React.Component {
         localStorage.setItem('items', JSON.stringify(nextState));
     
     }
+   
 
   
     getProduct(productId){
@@ -108,9 +109,6 @@ class ViewProductDetail extends React.Component {
                 soupItem:response.data[0]
               
             });
-            // console.log(response.data[0])
-       
-            
         });
      
 

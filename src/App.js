@@ -6,9 +6,10 @@ import Main from './pages/main';
 import SoupPage from './pages/SoupPage';
 import SaladPage from './pages/SaladPage';
 import ViewProductDetail from './components/ViweProducts/ViewProductDetail';
-import LoginPage from './components/LoginPage/login';
+import LoginPage from './components/LoginPage/Login';
 import Cart from './components/CartPage/Cart';
 import Signup from './components/LoginPage/Signup';
+
 
 
 
@@ -30,6 +31,7 @@ function App() {
           <Route path="/customer-signup-page" exact><Signup /></Route>
         </Switch>
       </Router>
+
       
     </div>
   );

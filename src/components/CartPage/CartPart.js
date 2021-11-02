@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Cart.css";
-import ProductService from '../../service/ProductService';
 import{Link} from "react-router-dom";
 
 function CartPart() {

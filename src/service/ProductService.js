@@ -22,6 +22,9 @@ class ProductService {
     postTheAddress(data){
         return Service.post(`/customer-address`, data)
     }
+    getCustomers(){
+        return Service.get("/customers")
+    }
 
     // postOrderProduct(orderId , productId ,productQuntity ){
     //     return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
