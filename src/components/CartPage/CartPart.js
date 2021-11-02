@@ -17,7 +17,6 @@ function CartPart() {
             console.log(getArray[i] , "successfull pushed 1");
         
         }else if (getArray[i] == null){
-            console.log("null value 1")
 
         }else{
             console.log("end of array 1");
