@@ -17,7 +17,7 @@ class Singup extends React.Component{
                 Email:"",
                 phone:0  
             },
-            addrest:{
+            address:{
                 addrestId:0,
                 zip:0,
                 Street:"",
