@@ -29,39 +29,20 @@ class Singup extends React.Component{
         };
         
     }
-
-
        saveQuntity() {
-        ProductService.postTheAddress()
-        .then(response => {
-            this.setState({
-                addrestId:response.data.addrestId,
-                zip:response.data.zip,
-                Street:response.data.Street,
-                city:response.data.city,
-                State:response.data.State
-                
-            });
-            console.log(response);
+           let customerData = {
+                customerName:this.state.customerName,
+                Email:this.state.Email,
+                phone:this.state.phone 
+           }
+           let address = {
+                zip:this.state.zip,
+                Street:this.state.Street,
+                city:this.state.city,
+                State:this.state.addState
 
-            ProductService.postOrderProduct(response.data.orderId , this.state.soupItem.productId ,this.state.productQuntity)
-                .then(res => {
-                    // this.setState({
-                    //     orderProduct_id:res.data.orderProduct_id
-                    // })
-                    console.log(res);
-                })
-            // ProductService.getOrderProduct(this.state.orderProduct_id)
-            // .then(response =>{
-            //     // this.setState({
-            //     //     orderProduct_id:response.orderProduct_id
-            //     // });
-            //     console.log(response.orderProduct_id)
-            // })
-        })
-        .catch(e => {
-            console.log(e);
-        });
+           }
+       
     }
 
     render() {
@@ -81,7 +62,7 @@ class Singup extends React.Component{
                         <input type="email" className="form-control" placeholder="Enter email" value={this.state.Email} />
                     </div>
                     <div className="form-group">
-                        <label>Phone Number</label>
+                        <label>Number</label>
                         <input type="text" className="form-control" placeholder="Phone Number" value={this.state.phone} />
                     </div>
 
@@ -99,7 +80,7 @@ class Singup extends React.Component{
                     </div>
                     <div className="form-group">
                         <label>State</label>
-                        <input type="text" className="form-control" placeholder="state" value={this.state.state} />
+                        <input type="text" className="form-control" placeholder="state" value={this.state.addState} />
                     </div>
                     <Link to="/cart-page"><button type="submit" className="singupBtn ">Sign Up</button></Link>
                     
