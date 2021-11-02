@@ -50,7 +50,7 @@ public class OrderProductController {
         OrderProduct setOrderPEntity = new OrderProduct();
         OrderProduct orderedProduct = new OrderProduct();
 
-        Product product1 =  productInterface.getProductById(productId);
+        Product product1 = (Product) productInterface.getProductById(productId);
         Order order = orderInterface.getOrderId(orderId);
 
         setOrderPEntity.setProductQuantity(productQuantity);

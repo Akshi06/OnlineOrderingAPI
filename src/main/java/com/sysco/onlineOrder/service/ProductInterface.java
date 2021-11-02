@@ -8,7 +8,7 @@ import java.util.List;
 public interface ProductInterface {
     List<Product> getAllProduct();
 
-   Product getProductById (int productId);
+    List<Product>  getProductById (int productId);
 
     Product add(Product product);
 

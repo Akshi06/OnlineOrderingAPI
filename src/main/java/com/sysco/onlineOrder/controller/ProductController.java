@@ -77,15 +77,15 @@ public class ProductController {
      */
     @GetMapping("/products/{productId}")
     @ResponseBody
-    public ResponseEntity <Product> getProductById(@PathVariable("productId") int productId) {
-     Product products = null;
+    public ResponseEntity< List<Product> >getProductById (@PathVariable("productId") int productId) {
+     List <Product> products = null;
 
         try {
             products = productInterface.getProductById(productId);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Product> (products, HttpStatus.OK);
+        return new ResponseEntity< List<Product> > (products, HttpStatus.OK);
     }
 
 }

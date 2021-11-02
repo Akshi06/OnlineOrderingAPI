@@ -20,8 +20,8 @@ public class ProductImplementation implements ProductInterface {
     }
 
     @Override
-    public Product getProductById(int productId) {
-        return productRepository.findById(productId);
+    public List<Product>  getProductById(int productId) {
+        return productRepository.findByProductId(productId);
     }
 
 

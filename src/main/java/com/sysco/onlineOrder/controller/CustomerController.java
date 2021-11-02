@@ -1,7 +1,10 @@
 package com.sysco.onlineOrder.controller;
 
 import com.sysco.onlineOrder.entity.Customer;
+import com.sysco.onlineOrder.entity.CustomerAddress;
+import com.sysco.onlineOrder.service.CustomerAddressInterface;
 import com.sysco.onlineOrder.service.CustomerInterface;
+import netscape.javascript.JSObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +26,9 @@ public class CustomerController {
 
     @Autowired
     private CustomerInterface customerInterface;
+
+    @Autowired
+    private CustomerAddressInterface customerAddressInterface;
 
 
     /**
@@ -72,15 +78,22 @@ public class CustomerController {
      * @see Customer
      */
     @PostMapping("/customer")
-    public ResponseEntity<Customer> addTheCustomer(@RequestBody Customer cus) {
-        Customer customer = null;
+    public ResponseEntity<Customer> addTheCustomer(@RequestBody Customer cus , int id) {
+        Customer setCustomer = new Customer();
+        Customer customer = new Customer();
+
+        CustomerAddress customerAddress = customerAddressInterface.getAddressById(id);
+
+        setCustomer.setAddress(customerAddress);
 
         try {
-            customer = customerInterface.addTheCustomer(cus);
+            customer = customerInterface.addTheCustomer(setCustomer);
         } catch (Exception ex) {
             ex.getMessage();
         }
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
+
+
 
 }
