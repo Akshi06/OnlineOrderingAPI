@@ -9,6 +9,7 @@ import ViewProductDetail from './components/ViweProducts/ViewProductDetail';
 import LoginPage from './components/LoginPage/Login';
 import Cart from './components/CartPage/Cart';
 import Signup from './components/LoginPage/Signup';
+import Singup from './components/LoginPage/Signup';
 
 
 
@@ -19,7 +20,7 @@ import Signup from './components/LoginPage/Signup';
 function App() {
   return (
     <div className="App">
-      <Router>
+      {/* <Router>
         <Switch>
           <Route path = '/' exact > <Main/> </Route>
           <Route path = '/SoupPage' exact > <SoupPage/> </Route>
@@ -30,8 +31,9 @@ function App() {
           <Route path = "/customer-login" exact><LoginPage /></Route>
           <Route path="/customer-signup-page" exact><Signup /></Route>
         </Switch>
-      </Router>
+      </Router> */}
 
+      <Singup />
       
     </div>
   );

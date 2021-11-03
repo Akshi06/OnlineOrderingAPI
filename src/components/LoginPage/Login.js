@@ -34,43 +34,18 @@ class login extends Component {
         });
     }
     
-    // saveCustomer() {
-        // var data = {
-        //     name: this.state.name,
-        //     mail: this.state.mail
-        // };
-        // console.log(data);
 
-
-        // ProductService.getCustomers()
-        // .then((res) =>{
-        //     console.log(res.data);
-        //     let cusData = []
-        //     for(let i in res.data){
-        //         if(res.data[i].customerName === data.name){
-        //             if(res.data[i].customerEmail === data.mail){
-        //                 console.log(res.data[i]);
-        //                 cusData.push(res.data[i]);
-        //                 window.localStorage.setItem("customer", JSON.stringify(cusData))    
-        //             }
-                    
-        //         }else{
-                       
-        //         } 
-        //     }
-        // })
-    // }
 
     saveCustomer(){
         let email = this.state.mail;
-        var name = this.state.name
+        let name = this.state.name
 
 
         if(email === "" || name === ""){
             alert("All Fields must be Filled")
             return false;
         }else{
-            var data = {
+            let data = {
                 name: this.state.name,
                 mail: this.state.mail
             };
