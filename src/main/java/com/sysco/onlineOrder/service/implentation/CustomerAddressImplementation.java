@@ -8,6 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class CustomerAddressImplementation implements CustomerAddressInterface {
@@ -19,7 +21,7 @@ public class CustomerAddressImplementation implements CustomerAddressInterface {
 
 
     @Override
-    public CustomerAddress getAddressById(int id) {
+    public List<CustomerAddress> getAddressById(int id) {
         return customerAddressRepository.findByAddress(id);
     }
 

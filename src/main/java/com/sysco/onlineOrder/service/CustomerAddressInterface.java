@@ -3,9 +3,11 @@ package com.sysco.onlineOrder.service;
 
 import com.sysco.onlineOrder.entity.CustomerAddress;
 
+import java.util.List;
+
 public interface CustomerAddressInterface {
 
-    CustomerAddress getAddressById (int id);
+    List<CustomerAddress> getAddressById (int id);
 
     CustomerAddress addAddress (CustomerAddress customerAddress);
 

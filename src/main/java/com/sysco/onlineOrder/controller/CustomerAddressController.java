@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -24,15 +25,15 @@ public class CustomerAddressController {
     private CustomerAddressInterface customerAddressInterface;
 
     @GetMapping("/customer-address/{id}")
-    public ResponseEntity <CustomerAddress> getAddressById(@PathVariable("id") int addressId){
-        CustomerAddress customerAddress = new CustomerAddress();
+    public ResponseEntity <List<CustomerAddress>> getAddressById(@PathVariable("id") int addressId){
+        List<CustomerAddress> customerAddress = null;
         try {
             customerAddress = customerAddressInterface.getAddressById(addressId);
         }
         catch (Exception ex){
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity<CustomerAddress>(customerAddress, HttpStatus.OK);
+        return new ResponseEntity<List<CustomerAddress>>(customerAddress, HttpStatus.OK);
     }
 
     @PostMapping("/customer-address")

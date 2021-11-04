@@ -82,9 +82,9 @@ public class CustomerController {
         Customer setCustomer = new Customer();
         Customer customer = new Customer();
 
-        CustomerAddress customerAddress = customerAddressInterface.getAddressById(id);
-
+        CustomerAddress customerAddress = (CustomerAddress) customerAddressInterface.getAddressById(id);
         setCustomer.setAddress(customerAddress);
+
 
         try {
             customer = customerInterface.addTheCustomer(setCustomer);
