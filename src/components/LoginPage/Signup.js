@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link } from 'react-router-dom';
 import ProductService from '../../service/ProductService';
+import Nav from '../Navigation';
 
 
 import "./Signup.css"
@@ -9,6 +10,7 @@ class Singup extends React.Component{
     constructor(props){
         super(props);
         this.saveCustomer = this.saveCustomer.bind(this);
+
         this.onChangeName = this.onChangeName.bind(this);
         this.onChangeMail = this.onChangeMail.bind(this);
         this.onChangePhone = this.onChangePhone.bind(this);
@@ -19,20 +21,20 @@ class Singup extends React.Component{
        
     
         this.state = {
-            customerData:{
+            // customerData:{
                 customerId:0,
                 customerName:"",
                 email:"",
-                phone:null  
-            },
-            address:{
+                phone:0 , 
+            // },
+            // address:{
                 addrestId:0,
-                zip:null,
+                zip:0,
                 Street:"",
                 city:"",
-                addState:""
+                addState:"",
                 
-            },
+            // },
 
             submit:true
             
@@ -43,13 +45,13 @@ class Singup extends React.Component{
 
     onChangeName(e) {
         this.setState({
-            name: e.target.value
+            customerName: e.target.value
         });
     }
  
     onChangeMail(e) {
         this.setState({
-            mail: e.target.value
+            email: e.target.value
         });
     }
     onChangePhone(e) {
@@ -65,7 +67,7 @@ class Singup extends React.Component{
     }
     onChangeStreet(e) {
         this.setState({
-            street: e.target.value
+            Street: e.target.value
         });
     }
  
@@ -76,32 +78,36 @@ class Singup extends React.Component{
     }
     onChangeAddState(e) {
         this.setState({
-            state: e.target.value
+            addState: e.target.value
         });
     }
  
    
     saveCustomer() {
         // let customerData = {
-              let customerName = this.state.customerData.customerName;
-              let email = this.state.customerData.email;
-            let phone = this.state.customerData.phone; 
-        // }
-        // let address = {
-               let zip = this.state.address.zip;
-              let  Street = this.state.address.Street;
-              let city = this.state.address.city;
-              let  State = this.state.address.addState
+              let  savecustomerName = this.state.customerName;
+              let  saveemail = this.state.email;
+              let  savephone = this.state.phone; 
+              let  savezip = this.state.zip;
+              let   saveStreet = this.state.Street;
+              let  savecity = this.state.city;
+              let   saveState = this.state.addState
 
         // }
-        if(email === "" || customerName === "" || phone === "" || zip === ""|| Street === "" || city === ""|| State === ""){
+        if(savecustomerName === "" || saveemail === "" || savephone === "" || savezip === ""|| saveStreet === "" || savecity === ""|| saveState === ""){
             alert("All Fields must be Filled")
             return false;
         }else{
             let data = {
-                customerName : this.state.customerData.customerName,
-                email :this.state.customerData.email,
-                phone : this.state.customerData.phone 
+                datacustomerName : this.state.customerName,
+                dataemail :this.state.email,
+                dataPhone : this.state.phone,
+                datazip : this.state.zip,
+                dataStreet :this.state.Street,
+                datacity : this.state.city,
+                dataState : this.state.addState
+
+                 
             }
             console.log(data);
             ProductService.getCustomers()
@@ -109,18 +115,43 @@ class Singup extends React.Component{
                 console.log(res.data);
                 let cusRegisterData = []
                 for(let i in res.data){
-                    if(res.data[i].customerName === data.customerName){
-                        if(res.data[i].customerEmail === data.email){
-                            console.log(res.data[i]);
-                            cusRegisterData.push(res.data[i]);
-                            window.localStorage.setItem("cusRegisterData", JSON.stringify(cusRegisterData))    
-                            alert(" You'r already member of Yummy Tummy");
-                            // this.props.history.push("/cart-page")
-                            return true ;
-                        }
-                       
+                        if(res.data[i].customerName === data.datacustomerName){
+                            if(res.data[i].customerEmail === data.dataemail){
+                                if(res.data[i].customerPhone === data.dataPhone){
+                                    console.log(res.data[i]);
+                                    cusRegisterData.push(res.data[i]);
+                                    window.localStorage.setItem("cusRegisterData", JSON.stringify(cusRegisterData))    
+                                    alert(" You'r already member of Yummy Tummy please Login");
+                                    return true ;
+                                }
+                                
+                                
+                            } 
                         
-                    }
+                        } else{
+                                    // if(res.data[i].address[j].city === data.datazip && res.data[i].address[j].street === data.dataStreet && res.data[i].address[j].city === data.datacity && res.data[i].address[j].dataState === data.dataState ){
+
+                                    // }else{
+                                        console.log("print");
+                                        
+                                    // }
+                                    ProductService.postTheAddress(data)
+                                        .then(response => {
+                                            this.setState({
+                                                id:response.data.cusAddressId,
+                                                zip:response.data.datazip,
+                                                Street:response.data.saveStreet,
+                                                city:response.data.savecity,
+                                                State:response.data.saveState,
+                                                submit: true
+                                                
+                                            })
+                                            console.log(response.data)
+                                        }) .catch(e =>{
+                                            console.log(e);
+                                        })
+
+                                }
                     
                 }
             })
@@ -132,44 +163,46 @@ class Singup extends React.Component{
 
     render() {
         return (
+            
         <div className="signup-bg">
+            <Nav />
             <div className="singupContainer"> 
                 <form className="singupForm"> 
                     <h3>Sign Up</h3>
 
                     <div className="form-group">
                         <label> Name</label>
-                        <input type="text" className="form-control" placeholder="Name" onChange={this.onChangeName} value={this.state.customerData.customerName} required  name="name" />
+                        <input type="text" className="form-control" placeholder="Name" onChange={this.onChangeName} value={this.state.customerName} required  name="name" />
                     </div>
 
                     <div className="form-group">
                         <label>Email </label>
-                        <input type="email" className="form-control" placeholder="Enter email" onChange={this.onChangeMail} value={this.state.customerData.email}  required o name="mail" />
+                        <input type="email" className="form-control" placeholder="Enter email" onChange={this.onChangeMail} value={this.state.email}  required  name="mail" id="mail" />
                     </div>
                     <div className="form-group">
                         <label>Number</label>
-                        <input type="text" className="form-control" placeholder="Phone Number" value={this.state.customerData.phone} required onChange={this.onChangePhone} name="phone" />
+                        <input type="text" className="form-control" placeholder="Phone Number" value={this.state.phone} required onChange={this.onChangePhone} name="phone" />
                     </div>
 
                     <div className="form-group">
                         <label>Zip Code</label>
-                        <input type="text" className="form-control" placeholder="Zip Code" value={this.state.address.zip} required onChange={this.onChangeZip} name="zip"/>
+                        <input type="text" className="form-control" placeholder="Zip Code" value={this.state.zip} required onChange={this.onChangeZip} name="zip"/>
                     </div>
                     <div className="form-group">
                         <label>Street</label>
-                        <input type="text" className="form-control" placeholder="Street" value={this.state.address.Street} required onChange={this.onChangeStreet} name="street" />
+                        <input type="text" className="form-control" placeholder="Street" value={this.state.Street} required onChange={this.onChangeStreet} name="street" />
                     </div>
                     <div className="form-group">
                         <label>City</label>
-                        <input type="text" className="form-control" placeholder="City" value={this.state.address.city} required onChange={this.onChangeCity} name="city"/>
+                        <input type="text" className="form-control" placeholder="City" value={this.state.city} required onChange={this.onChangeCity} name="city"/>
                     </div>
                     <div className="form-group">
                         <label>State</label>
-                        <input type="text" className="form-control" placeholder="state" value={this.state.address.addState} required onChange={this.onChangeAddState} name="state"/>
+                        <input type="text" className="form-control" placeholder="state" value={this.state.addState} required onChange={this.onChangeAddState} name="state"/>
                     </div>
-                    {/* <Link to="/cart-page"> */}
-                        <button type="submit" className="singupBtn" onClick={this.saveCustomer}>Sign Up</button>
-                        {/* </Link> */}
+                    <Link to="/cart-page">
+                        <button  className="singupBtn" onClick={this.saveCustomer}>Sign Up</button>
+                    </Link>
                     
 
                 </form>

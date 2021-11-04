@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Link , Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import ProductService from '../../service/ProductService';
+import Nav from '../Navigation';
 import "./Signup.css"
 
 
@@ -77,28 +78,38 @@ class login extends Component {
 
     render() {
         return (
-            <div className="singupContainer"> 
-            <form className="singupForm" onSubmit={this.handleSumbit}> 
-                <h3>Login</h3>
+            <div>
+                <Nav />
+                <div className="singupContainer"> 
+            
+                <form className="singupForm" onSubmit={this.handleSumbit}> 
+                    <h3>Login</h3>
 
-                <div className="form-group">
-                    <label> Name</label>
-                    <input type="text" className="form-control" placeholder="Name" id="name"  required value={this.state.name} onChange={this.onChangeName} name="name" />
+                    <div className="form-group">
+                        <label> Name</label>
+                        <input type="text" className="form-control" placeholder="Name" id="name"  required value={this.state.name} onChange={this.onChangeName} name="name" />
+                    </div>
+
+                    <div className="form-group">
+                        <label>Email </label>
+                        <input type="email" 
+                        className="form-control" 
+                        placeholder="Enter email"  
+                        id="email"  
+                        value={this.state.mail} 
+                        onChange={this.onChangeMail} 
+                        name="mail"/>
+                    </div>
+                    {/* <Link to="/cart-page" > */}
+                        <button type="submit" className="singupBtn " onClick= {this.saveCustomer}>Login</button>
+                    {/* </Link> */}
+                    <p className="forgot-password ">
+                        You didn't have account yet <Link to="/customer-signup-page" className="loginLink">Signup</Link>
+                    </p>
+
+                </form>
                 </div>
-
-                <div className="form-group">
-                    <label>Email </label>
-                    <input type="email" className="form-control" placeholder="Enter email"  id="email"  value={this.state.mail} onChange={this.onChangeMail} name="mail"/>
-                </div>
-                {/* <Link to="/cart-page" > */}
-                    <button type="submit" className="singupBtn " onClick= {this.saveCustomer}>Login</button>
-                {/* </Link> */}
-                <p className="forgot-password ">
-                    You didn't have account yet <Link to="/customer-signup-page" className="loginLink">Signup</Link>
-                </p>
-
-            </form>
-        </div>
+            </div>
         );
     }
 }

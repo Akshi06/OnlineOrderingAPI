@@ -20,7 +20,7 @@ class ProductService {
         return Service.post(`/customer`, data)
     }
     postTheAddress(data){
-        return Service.post(`/customer-address`, data)
+        return Service.post("/customer-address", data)
     }
     getCustomers(){
         return Service.get("/customers")
