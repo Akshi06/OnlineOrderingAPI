@@ -114,7 +114,9 @@ class Singup extends React.Component{
             .then((res) =>{
                 console.log(res.data);
                 let cusRegisterData = []
+                let address = []
                 for(let i in res.data){
+                    for(let j in res.data[i].address){
                         if(res.data[i].customerName === data.datacustomerName){
                             if(res.data[i].customerEmail === data.dataemail){
                                 if(res.data[i].customerPhone === data.dataPhone){
@@ -124,34 +126,51 @@ class Singup extends React.Component{
                                     alert(" You'r already member of Yummy Tummy please Login");
                                     return true ;
                                 }
+                                else{
+                                   
+                                    if(res.data[i].address[j].zip === data.datazip && res.data[i].address[j].street === data.dataStreet && res.data[i].address[j].city === data.datacity && res.data[i].address[j].dataState === data.dataState ){
+                                        // if(res.data[i].address[j].street === data.dataStreet){
+                                            // if( res.data[i].address[j].city === data.datacity){
+                                                // if(res.data[i].address[j].dataState === data.dataState){
+                                                    console.log(res.data[i].address[j]);
+                                                    address.push(res.data[i].address[j]);
+                                                    window.localStorage.setItem("address" , JSON.stringify(address))
+                                                    return true;
+                                                }
+                                                else{
+                                                    console.log("print");
+                                                    ProductService.postTheAddress(data)
+                                                    .then(response => {
+                                                        this.setState({
+                                                            id:response.data.cusAddressId,
+                                                            zip:response.data.datazip,
+                                                            Street:response.data.saveStreet,
+                                                            city:response.data.savecity,
+                                                            State:response.data.saveState,
+                                                            submit: true
+                                                            
+                                                        })
+                                                        console.log(response.data)
+                                                    }) .catch(e =>{
+                                                        console.log(e);
+                                                    })
+                                                    
+                                                // }
+                                            // }
+                                        // }
+
+                                    }
+                                    
+
+                                }
                                 
                                 
                             } 
                         
-                        } else{
-                                    // if(res.data[i].address[j].city === data.datazip && res.data[i].address[j].street === data.dataStreet && res.data[i].address[j].city === data.datacity && res.data[i].address[j].dataState === data.dataState ){
+                        } 
 
-                                    // }else{
-                                        console.log("print");
-                                        
-                                    // }
-                                    ProductService.postTheAddress(data)
-                                        .then(response => {
-                                            this.setState({
-                                                id:response.data.cusAddressId,
-                                                zip:response.data.datazip,
-                                                Street:response.data.saveStreet,
-                                                city:response.data.savecity,
-                                                State:response.data.saveState,
-                                                submit: true
-                                                
-                                            })
-                                            console.log(response.data)
-                                        }) .catch(e =>{
-                                            console.log(e);
-                                        })
-
-                                }
+                    }
+                        
                     
                 }
             })
