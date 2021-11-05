@@ -1,8 +1,10 @@
-import React from 'react';
+import React,  { useState } from 'react';
 import "./Cart.css";
 import{Link} from "react-router-dom";
+import ProductService from '../../service/ProductService';
 
 function CartPart() {
+   
 
 
     let priceArray = []
@@ -35,6 +37,7 @@ function CartPart() {
         
         return total
     }
+    const [state, setState] = useState();
 
      
     // saveQuntity(() =>{
@@ -44,7 +47,7 @@ function CartPart() {
     //                 id:response.data.orderId,
     //                 orderDate: response.data.orderDate,
     //                 submitted : true
-    //         );
+    //         )
     //                 console.log(response);
         
     //                 ProductService.postOrderProduct(response.data.orderId , this.state.soupItem.productId ,this.state.productQuntity)
@@ -66,6 +69,19 @@ function CartPart() {
     //                 console.log(e);
     //             });
     // })
+    const saveQuntity = () =>{
+        ProductService.postOrder()
+            .then(response =>{
+            this.setState({
+                id:response.data.orderId,
+                orderDate: response.data.orderDate,
+                submitted : true
+            })
+            console.log(response);  
+
+            
+        })  
+    }
     
 
     
@@ -123,8 +139,8 @@ function CartPart() {
                    
 					
 				</table>
-                <Link to ="/customer-login">
-                     <button className="cartBtn">Pay</button>
+                <Link to ="/">
+                     <button onClick = {saveQuntity()} className="cartBtn">Pay</button>
                 </Link>
               
             </div>

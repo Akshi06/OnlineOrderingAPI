@@ -85,91 +85,82 @@ class Singup extends React.Component{
    
     saveCustomer() {
         // let customerData = {
-              let  savecustomerName = this.state.customerName;
-              let  saveemail = this.state.email;
-              let  savephone = this.state.phone; 
-              let  savezip = this.state.zip;
-              let   saveStreet = this.state.Street;
-              let  savecity = this.state.city;
+              let  saveCustomerName = this.state.customerName;
+              let  saveEmail = this.state.email;
+              let  savePhone = this.state.phone; 
+              let  saveZip = this.state.zip;
+              let  saveStreet = this.state.Street;
+              let  saveCity = this.state.city;
               let   saveState = this.state.addState
 
         // }
-        if(savecustomerName === "" || saveemail === "" || savephone === "" || savezip === ""|| saveStreet === "" || savecity === ""|| saveState === ""){
+        if(saveCustomerName === "" || saveEmail === "" || savePhone === "" || saveZip === ""|| saveStreet === "" || saveCity === ""|| saveState === ""){
             alert("All Fields must be Filled")
             return false;
         }else{
-            let data = {
-                datacustomerName : this.state.customerName,
-                dataemail :this.state.email,
-                dataPhone : this.state.phone,
-                datazip : this.state.zip,
-                dataStreet :this.state.Street,
-                datacity : this.state.city,
+            let customerData = {
+                name : this.state.customerName,
+                mail :this.state.email,
+                phone : this.state.phone,
+                zipCode : this.state.zip,
+                street :this.state.Street,
+                city : this.state.city,
                 dataState : this.state.addState
 
                  
             }
-            console.log(data);
+            console.log(customerData);
             ProductService.getCustomers()
             .then((res) =>{
                 console.log(res.data);
                 let cusRegisterData = []
                 let address = []
                 for(let i in res.data){
-                    for(let j in res.data[i].address){
-                        if(res.data[i].customerName === data.datacustomerName){
-                            if(res.data[i].customerEmail === data.dataemail){
-                                if(res.data[i].customerPhone === data.dataPhone){
+                    // for(let j in res.data[i].address){
+                        if(res.data[i].customerName === customerData.name){
+                            if(res.data[i].customerEmail === customerData.mail){
+                                if(res.data[i].customerPhone === customerData.phone){
                                     console.log(res.data[i]);
                                     cusRegisterData.push(res.data[i]);
                                     window.localStorage.setItem("cusRegisterData", JSON.stringify(cusRegisterData))    
                                     alert(" You'r already member of Yummy Tummy please Login");
                                     return true ;
                                 }
-                                else{
+                                // else{
                                    
-                                    if(res.data[i].address[j].zip === data.datazip && res.data[i].address[j].street === data.dataStreet && res.data[i].address[j].city === data.datacity && res.data[i].address[j].dataState === data.dataState ){
-                                        // if(res.data[i].address[j].street === data.dataStreet){
-                                            // if( res.data[i].address[j].city === data.datacity){
-                                                // if(res.data[i].address[j].dataState === data.dataState){
-                                                    console.log(res.data[i].address[j]);
-                                                    address.push(res.data[i].address[j]);
-                                                    window.localStorage.setItem("address" , JSON.stringify(address))
-                                                    return true;
-                                                }
-                                                else{
-                                                    console.log("print");
-                                                    ProductService.postTheAddress(data)
-                                                    .then(response => {
-                                                        this.setState({
-                                                            id:response.data.cusAddressId,
-                                                            zip:response.data.datazip,
-                                                            Street:response.data.saveStreet,
-                                                            city:response.data.savecity,
-                                                            State:response.data.saveState,
-                                                            submit: true
+                                //     if(res.data[i].address[j].zip === data.zipCode && res.data[i].address[j].street === data.street && res.data[i].address[j].city === data.city && res.data[i].address[j].dataState === data.dataState ){
+                                //         console.log(res.data[i].address[j]);
+                                //         address.push(res.data[i].address[j]);
+                                //         window.localStorage.setItem("address" , JSON.stringify(address))
+                                //         return true;
+                                //     }
+                                //     else{
+                                //         console.log("print");
+                                //         ProductService.postTheAddress(data)
+                                //         .then(response => {
+                                //             this.setState({
+                                //                 id:response.data.cusAddressId,
+                                //                 addressZip:response.data.zipCode,
+                                //                 addressStreet:response.data.saveStreet,
+                                //                 addressCity:response.data.saveCity,
+                                //                 addressState:response.data.saveState,
+                                                
                                                             
-                                                        })
-                                                        console.log(response.data)
-                                                    }) .catch(e =>{
-                                                        console.log(e);
-                                                    })
-                                                    
-                                                // }
-                                            // }
-                                        // }
+                                //             })
+                                //                 console.log(response.data)
+                                //             }) .catch(e =>{
+                                //                 console.log(e);
+                                //             })
 
-                                    }
-                                    
-
-                                }
+                                //     }
+                                // }
                                 
                                 
                             } 
                         
                         } 
 
-                    }
+                    // }
                         
                     
                 }

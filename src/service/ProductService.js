@@ -19,16 +19,13 @@ class ProductService {
     postTheCustomer(data){
         return Service.post(`/customer`, data)
     }
-    postTheAddress(data){
-        return Service.post("/customer-address", data)
-    }
-    getCustomers(){
-        return Service.get("/customers")
+    postOrder(data){
+        return Service.post("/orders?cusId=2",data)
     }
 
-    // postOrderProduct(orderId , productId ,productQuntity ){
-    //     return Service.post(`/orderProduct?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
-    // }
+    getByCustomerId(){
+        return Service.get("/customer/2")
+    }
 
     postPaymentDetail(){
         return Service.post(`/payment`)

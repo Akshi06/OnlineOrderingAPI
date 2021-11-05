@@ -5,7 +5,9 @@ const Nav = () => {
             <>
                 <div className= 'nav'>
                     <div className='logo'>
-                        <img src="../image/logo.gif" alt="Logo" className="logoImg"/>
+                        <Link to ="/">
+                            <img src="../image/logo.gif" alt="Logo" className="logoImg"/>
+                        </Link>
                        
                     </div>
                     <div className = "navBtn">
