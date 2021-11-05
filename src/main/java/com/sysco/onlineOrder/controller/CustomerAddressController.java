@@ -1,5 +1,6 @@
 package com.sysco.onlineOrder.controller;
 
+import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.CustomerAddress;
 import com.sysco.onlineOrder.service.CustomerAddressInterface;
 import com.sysco.onlineOrder.service.CustomerInterface;
@@ -23,6 +24,17 @@ public class CustomerAddressController {
 
     @Autowired
     private CustomerAddressInterface customerAddressInterface;
+
+    @GetMapping("/customer-address")
+    public ResponseEntity<List<CustomerAddress>> getAllAddresses(){
+        List<CustomerAddress> addresses = null;
+        try {
+            addresses = customerAddressInterface.getAllAddress();
+        } catch (Exception ex) {
+            LOGGER.error(Arrays.toString(ex.getStackTrace()));
+        }
+        return new ResponseEntity<List<CustomerAddress>>(addresses, HttpStatus.OK);
+    }
 
     @GetMapping("/customer-address/{id}")
     public ResponseEntity <List<CustomerAddress>> getAddressById(@PathVariable("id") int addressId){

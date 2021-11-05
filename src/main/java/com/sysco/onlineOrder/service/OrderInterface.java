@@ -7,7 +7,7 @@ import java.util.List;
 public interface OrderInterface {
     List<Order> getAllOrder();
 
-    List<Order> addTheOrder(Order order);
+    Order addTheOrder(Order order);
 
     Order getOrderId(int OrderId);
 

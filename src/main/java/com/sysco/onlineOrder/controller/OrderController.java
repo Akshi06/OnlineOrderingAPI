@@ -53,14 +53,19 @@ public class OrderController {
      * @see ResponseEntity
      * @see List
      */
-    @PostMapping("/orders")
-    @ResponseBody
-    public ResponseEntity<List<Order>> addTheOrder(@RequestParam(required = false) int cusId) {
+    @RequestMapping(
+            value = "/orders/{cusId}",
+            produces = "application/json",
+            method = RequestMethod.POST)
+
+//    @PostMapping("/orders/{cusId}")
+//    @ResponseBody
+    public ResponseEntity <Order> addTheOrder(@RequestParam(required = false) int cusId) {
 
 //        take customerId
         Customer customer = (Customer) customerInterface.getCustomerById(cusId);
 
-        List<Order> PlaceOrder = null;
+        Order PlaceOrder = null;
         Order order = new Order();
 
 //        generator the order date
@@ -76,6 +81,6 @@ public class OrderController {
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity<List<Order>>(PlaceOrder, HttpStatus.OK);
+        return new ResponseEntity <Order> (PlaceOrder, HttpStatus.OK);
     }
 }

@@ -21,6 +21,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> , C
     @Transactional
     @Modifying
     @Query(value = " FROM Customer WHERE cusId =?1")
-    Customer findByCustomerId(int id);
+    List<Customer> findByCustomerId(int cusId);
 
 }

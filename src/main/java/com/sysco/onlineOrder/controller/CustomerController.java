@@ -54,19 +54,20 @@ public class CustomerController {
     /**
      * get customer by id
      *
-     * @param customerId customerId
+     * @param cusId customerId
      * @return {@link ResponseEntity}
      * @see ResponseEntity
      */
-    @GetMapping("customer/{id}")
-    public ResponseEntity <Customer> getCustomerById(@PathVariable("id") int customerId) {
-        Customer customers = null;
+    @GetMapping("/customer/{cusId}")
+    @ResponseBody
+    public ResponseEntity <List<Customer>> getCustomerById(@PathVariable("cusId") int cusId) {
+        List<Customer> customers = null;
         try {
-            customers = customerInterface.getCustomerById(customerId);
+            customers = customerInterface.getCustomerById(cusId);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Customer> (customers, HttpStatus.OK);
+        return new ResponseEntity <List<Customer>> (customers, HttpStatus.OK);
     }
 
     /**

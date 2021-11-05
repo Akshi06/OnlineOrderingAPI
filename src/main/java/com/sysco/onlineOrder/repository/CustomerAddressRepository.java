@@ -1,6 +1,7 @@
 package com.sysco.onlineOrder.repository;
 
 
+import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.CustomerAddress;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -12,6 +13,12 @@ import java.util.List;
 
 
 public interface CustomerAddressRepository extends JpaRepository<CustomerAddress, Integer>, CrudRepository<CustomerAddress, Integer> {
+
+    @Transactional
+    @Modifying
+    @Query("FROM Customer")
+    List<CustomerAddress> findAllAddress();
+
     @Transactional
     @Modifying
     @Query("FROM CustomerAddress WHERE cusAddressId = ?1")

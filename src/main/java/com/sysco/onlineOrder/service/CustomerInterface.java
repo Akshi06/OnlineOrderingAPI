@@ -7,7 +7,7 @@ import java.util.List;
 public interface CustomerInterface {
     List<Customer> getAllCustomer();
 
-    Customer getCustomerById(int id);
+    List<Customer> getCustomerById(int cusId);
 
     Customer addTheCustomer(Customer customers);
 

@@ -33,8 +33,8 @@ public class OrderImplementation implements OrderInterface {
      * @see Order
      */
     @Override
-    public List<Order> addTheOrder(Order order) {
-        return (List<Order>) orderRepository.save(order);
+    public Order addTheOrder(Order order) {
+        return orderRepository.save(order);
     }
 
 

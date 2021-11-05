@@ -37,14 +37,14 @@ public class CustomerImplementation implements CustomerInterface {
     /**
      * get customer by id
      *
-     * @param id id
+     * @param cusId id
      * @return {@link List}
      * @see List
      * @see Customer
      */
     @Override
-    public Customer getCustomerById(int id) {
-        return customerRepository.findByCustomerId(id);
+    public List<Customer> getCustomerById(int cusId) {
+        return customerRepository.findByCustomerId(cusId);
     }
 
     @Override

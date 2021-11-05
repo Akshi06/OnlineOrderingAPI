@@ -21,6 +21,11 @@ public class CustomerAddressImplementation implements CustomerAddressInterface {
 
 
     @Override
+    public List<CustomerAddress> getAllAddress() {
+        return customerAddressRepository.findAllAddress();
+    }
+
+    @Override
     public List<CustomerAddress> getAddressById(int id) {
         return customerAddressRepository.findByAddress(id);
     }
