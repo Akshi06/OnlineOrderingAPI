@@ -75,11 +75,20 @@ function CartPart() {
             this.setState({
                 id:response.data.orderId,
                 orderDate: response.data.orderDate,
-                submitted : true
+               
             })
-            console.log(response);  
-
+            console.log(response); 
             
+            ProductService.postOrderProduct(response.data.orderId,letIArray.soupItem.productId,letIArray.productQuntity)
+            .then(response =>{
+                this.setState({
+                    orderProduct_id:response.order_product_id,
+                 
+                })
+                console.log(response.order_product_id)
+            })
+
+
         })  
     }
     
