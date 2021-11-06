@@ -54,7 +54,7 @@ public class OrderController {
      * @see List
      */
     @RequestMapping(
-            value = "/orders/{cusId}",
+            value = "/orders",
             produces = "application/json",
             method = RequestMethod.POST)
 
@@ -63,7 +63,7 @@ public class OrderController {
     public ResponseEntity <Order> addTheOrder(@RequestParam(required = false) int cusId) {
 
 //        take customerId
-        Customer customer = (Customer) customerInterface.getCustomerById(cusId);
+        Customer customer =  customerInterface.getCustomerById(cusId);
 
         Order PlaceOrder = null;
         Order order = new Order();

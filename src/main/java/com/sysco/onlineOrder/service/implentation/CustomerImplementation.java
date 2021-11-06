@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CustomerImplementation implements CustomerInterface {
@@ -43,8 +44,8 @@ public class CustomerImplementation implements CustomerInterface {
      * @see Customer
      */
     @Override
-    public List<Customer> getCustomerById(int cusId) {
-        return customerRepository.findByCustomerId(cusId);
+    public Customer getCustomerById(int cusId) {
+        return customerRepository.getById(cusId);
     }
 
     @Override

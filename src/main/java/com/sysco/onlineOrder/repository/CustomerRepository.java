@@ -18,9 +18,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> , C
     @Query("FROM Customer")
     List<Customer> findAll();
 
-    @Transactional
-    @Modifying
-    @Query(value = " FROM Customer WHERE cusId =?1")
-    List<Customer> findByCustomerId(int cusId);
+//    @Transactional
+//    @Modifying
+//    @Query(value = " FROM Customer WHERE cusId =?1")
+//    List<Customer> findByCustomerId(int cusId);
 
 }
