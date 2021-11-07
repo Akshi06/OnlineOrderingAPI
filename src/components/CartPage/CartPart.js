@@ -16,6 +16,7 @@ function CartPart() {
         if(getArray[i] != null){
            letIArray.push(getArray[i])
             console.log(getArray[i] , "successfull pushed 1");
+            console.log(getArray[i] .soupItem.productId, "successfull pushed 1");
         
         }else if (getArray[i] == null){
 
@@ -37,55 +38,27 @@ function CartPart() {
         
         return total
     }
+
     const [state, setState] = useState();
 
-     
-    // saveQuntity(() =>{
-    //     ProductService.postCutIdAndDate()
-    //         .then(response => {
-    //             this.setState({
-    //                 id:response.data.orderId,
-    //                 orderDate: response.data.orderDate,
-    //                 submitted : true
-    //         )
-    //                 console.log(response);
-        
-    //                 ProductService.postOrderProduct(response.data.orderId , this.state.soupItem.productId ,this.state.productQuntity)
-    //                     .then(res => {
-    //                         // this.setState({
-    //                         //     orderProduct_id:res.data.orderProduct_id
-    //                         // })
-    //                         console.log(res);
-    //                     })
-    //                 // ProductService.getOrderProduct(this.state.orderProduct_id)
-    //                 // .then(response =>{
-    //                 //     // this.setState({
-    //                 //     //     orderProduct_id:response.orderProduct_id
-    //                 //     // });
-    //                 //     console.log(response.orderProduct_id)
-    //                 // })
-    //             })
-    //             .catch(e => {
-    //                 console.log(e);
-    //             });
-    // })
-    const saveQuntity = () =>{
+
+     function saveQuntity(){
         ProductService.postOrder()
             .then(response =>{
-            this.setState({
+            setState({
                 id:response.data.orderId,
                 orderDate: response.data.orderDate,
                
             })
             console.log(response); 
-            
+  
             ProductService.postOrderProduct(response.data.orderId,letIArray.soupItem.productId,letIArray.productQuntity)
-            .then(response =>{
-                this.setState({
-                    orderProduct_id:response.order_product_id,
+            .then(res =>{
+                setState({
+                    orderProduct_id:res.data.order_product_id,
                  
                 })
-                console.log(response.order_product_id)
+                console.log(res.data.order_product_id)
             })
 
 
@@ -149,7 +122,9 @@ function CartPart() {
 					
 				</table>
                 <Link to ="/">
-                     <button onClick = {saveQuntity()} className="cartBtn">Pay</button>
+                     <button 
+                     onClick = {saveQuntity} 
+                     className="cartBtn">Pay</button>
                 </Link>
               
             </div>
