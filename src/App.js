@@ -6,9 +6,8 @@ import Main from './pages/main';
 import SoupPage from './pages/SoupPage';
 import SaladPage from './pages/SaladPage';
 import ViewProductDetail from './components/ViweProducts/ViewProductDetail';
-import LoginPage from './components/LoginPage/Login';
 import Cart from './components/CartPage/Cart';
-import Signup from './components/LoginPage/Signup';
+
 
 
 
@@ -28,8 +27,6 @@ function App() {
           <Route path = '/SaladPage' exact > <SaladPage/> </Route>
           <Route path="/product/:productId" component = {ViewProductDetail} exact></Route>
           <Route path = "/cart-page" exact><Cart /></Route>
-          <Route path = "/customer-login" exact><LoginPage /></Route>
-          <Route path="/customer-signup-page" exact><Signup /></Route>
         </Switch>
       </Router>
       {/* <Singup /> */}
