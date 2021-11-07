@@ -63,7 +63,7 @@ public class OrderController {
     public ResponseEntity <Order> addTheOrder(@RequestParam(required = false) int cusId) {
 
 //        take customerId
-        Customer customer =  customerInterface.getCustomerById(cusId);
+        Customer customer2 =  customerInterface.getCustomerById(cusId);
 
         Order PlaceOrder = null;
         Order order = new Order();
@@ -73,7 +73,7 @@ public class OrderController {
         Date date = new Date(millis);
 
 
-        order.setCustomer(customer);
+        order.setCustomer(customer2);
         order.setOrderDate(date);
 
         try {
