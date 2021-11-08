@@ -12,10 +12,7 @@ class ViewProductDetail extends React.Component {
         super(props);
         this.getProduct = this.getProduct.bind(this);
         this.onChangeQuntity = this.onChangeQuntity.bind(this);
-        // this.saveQuntity = this.saveQuntity.bind(this);
-      
-        // this.getOrderProduct = this.getOrderProduct.bind(this)
-        
+       
         this.state = {
             soupItem:{
                 productId:0,
@@ -25,8 +22,6 @@ class ViewProductDetail extends React.Component {
                 img:"",
                 
             },
-            // productQuntity:0,
-           
             
             
         };
@@ -38,43 +33,6 @@ class ViewProductDetail extends React.Component {
           productQuntity : e.target.value
         });
     }
-
-     
-    // saveQuntity(){
-    //     var data ={
-    //         Quntity : this.state.productQuntity
-    //     }
-    // }
-
-    // saveQuntity() {
-    //     ProductService.postCutIdAndDate()
-    //     .then(response => {
-    //         this.setState({
-    //             id:response.data.orderId,
-    //             orderDate: response.data.orderDate,
-    //             submitted : true
-    //         });
-    //         console.log(response);
-
-    //         ProductService.postOrderProduct(response.data.orderId , this.state.soupItem.productId ,this.state.productQuntity)
-    //             .then(res => {
-    //                 // this.setState({
-    //                 //     orderProduct_id:res.data.orderProduct_id
-    //                 // })
-    //                 console.log(res);
-    //             })
-    //         // ProductService.getOrderProduct(this.state.orderProduct_id)
-    //         // .then(response =>{
-    //         //     // this.setState({
-    //         //     //     orderProduct_id:response.orderProduct_id
-    //         //     // });
-    //         //     console.log(response.orderProduct_id)
-    //         // })
-    //     })
-    //     .catch(e => {
-    //         console.log(e);
-    //     });
-    // }
 
     componentDidMount(){
         this.getProduct(this.props.match.params.productId);
@@ -207,7 +165,7 @@ class ViewProductDetail extends React.Component {
             ) : (
                 <div>
                   <br />
-                  <p>Please click on a Order...</p>
+                  <p>Please check the a Order...</p>
                 </div>
               )}
           </div>

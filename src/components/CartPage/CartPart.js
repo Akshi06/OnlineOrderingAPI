@@ -1,16 +1,17 @@
 import React,  { useState } from 'react';
 import "./Cart.css";
-import{Link} from "react-router-dom";
+// import{Link} from "react-router-dom";
 import ProductService from '../../service/ProductService';
 
 function CartPart() {
     const [order, setOrder] = useState(0);
-    const [orderProduct, setOrderProduct] = useState([]);
+    // const [payment, setPayment] = useState(0);
     const getItemArray = JSON.parse(localStorage.getItem('allItem') || '0');
 
     let priceArray = []
     let total = 0 
     let letIArray =[]
+ 
  
 
     for(let i in getItemArray){
@@ -23,6 +24,7 @@ function CartPart() {
             console.log("end of array ");
         }
     }
+    console.log(letIArray);
 
     function subTotal(price, quantity){
         let subTotal = price * quantity;
@@ -33,38 +35,30 @@ function CartPart() {
     function totalPrice(){
        for(let i = 0; i < priceArray.length; i++){
         total = total + priceArray[i]
+        localStorage.setItem('totalPrice' , total);
        }
         return total
     }
 
 
-    function postData(){
+    async function postData(){
         ProductService.postOrder()
-            .then(response =>{
-                setOrder({
-                    id:response.data.orderId,
-                    orderDate: response.data.orderDate,
-                })
-            console.log(response); 
+        .then((response) =>{
+            setOrder({
+                order:response.data.orderId
+            })
+            letIArray.forEach(
+                items =>(
+                    
+                     ProductService.postOrderProduct(response.data.orderId , items.soupItem.productId , items.productQuntity)
+                )
+            )
+            let localStoragePrice = localStorage.getItem("totalPrice");
+            ProductService.postPaymentDetail(response.data.orderId , localStoragePrice)
             
-            let getProductDetail = JSON.parse(localStorage.getItem('allItem'));
-            // for(let i in getProductDetail){
-            //     console.log(getProductDetail[i].soupItem.productId);
-            //     ProductService.postOrderProduct(response.data.orderId,getProductDetail[i].soupItem.productId,getProductDetail[i].productQuntity)
-            //     .then(res =>{
-            //         setOrderProduct({
-            //             orderProduct_id:res.data.order_product_id,
-                     
-            //         })
-            //         console.log(res.data.order_product_id)
-            //         alert(res.data.order_product_id)
-            //     })
-            // }
-
-           
-
-
-        })  
+            
+        })
+        
     }
     
 
@@ -114,9 +108,9 @@ function CartPart() {
 						</tr>
 					</tfoot>
 				</table>
-            <Link to ="/">
+            {/* <Link to ="/"> */}
                 <button onClick = {postData} className="cartBtn">Pay</button>
-            </Link>
+            {/* </Link> */}
         </div>
     );
 }

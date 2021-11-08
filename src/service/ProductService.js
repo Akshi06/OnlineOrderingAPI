@@ -19,8 +19,8 @@ class ProductService {
     postOrder(){
         return Service.post("/orders?cusId=2")
     }
-    postPaymentDetail(){
-        return Service.post(`/payment`)
+    postPaymentDetail(orderId , totalPayment){
+        return Service.post(`/payment?orderId=${orderId}&totalPayment=${totalPayment}`)
     }
     postOrderProduct(orderId , productId ,productQuntity ){
         return Service.post(`/order-product?orderId=${orderId}&productId=${productId}&productQuntity=${productQuntity}`)
