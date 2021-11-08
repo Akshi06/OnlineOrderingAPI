@@ -9,7 +9,7 @@ public interface OrderInterface {
 
     Order addTheOrder(Order order);
 
-    Order getOrderId(int OrderId);
+    Order getOrderId(Integer OrderId);
 
 
 }

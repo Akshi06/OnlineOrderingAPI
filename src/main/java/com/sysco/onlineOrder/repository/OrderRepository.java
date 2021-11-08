@@ -16,10 +16,10 @@ public interface OrderRepository extends JpaRepository<Order, Integer>, CrudRepo
     @Query("FROM Order")
     List<Order> findAll();
 
-    @Transactional
-    @Modifying
-    @Query(value = " FROM Order WHERE orderId =?1")
-    Order findById(int orderId);
+//    @Transactional
+//    @Modifying
+//    @Query(value = " FROM Order WHERE orderId =?1")
+//    Order findById(int orderId);
 
 
 }

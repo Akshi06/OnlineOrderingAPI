@@ -1,6 +1,8 @@
 package com.sysco.onlineOrder.entity;
 
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -11,7 +13,7 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
-    private int orderId;
+    private Integer orderId;
 
     @Column(name = "order_date")
     private Date orderDate;
@@ -23,20 +25,24 @@ public class Order {
     @OneToMany(mappedBy = "orderDetail")
     private List<OrderProduct> orderProductList;
 
+
+    @OneToOne(mappedBy = "orderDetail" )
+    private Payment payment;
+
     public Order() {
     }
 
-    public Order(int orderId, Date orderDate, Customer customer) {
+    public Order(Integer orderId, Date orderDate, Customer customer) {
         this.orderId = orderId;
         this.orderDate = orderDate;
         this.customer = customer;
     }
 
-    public int getOrderId() {
+    public Integer getOrderId() {
         return orderId;
     }
 
-    public void setOrderId(int orderId) {
+    public void setOrderId(Integer orderId) {
         this.orderId = orderId;
     }
 

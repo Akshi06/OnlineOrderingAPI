@@ -11,11 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 
-public interface OrderProductRepository extends JpaRepository<OrderProduct, Integer> , CrudRepository<OrderProduct, Integer> {
-    @Transactional
-    @Modifying
-    @Query("FROM OrderProduct")
-    List<OrderProduct> findAll();
+public interface OrderProductRepository extends  CrudRepository<OrderProduct, Integer> {
+//    @Transactional
+//    @Modifying
+//    @Query("FROM OrderProduct")
+//    List<OrderProduct> findAll();
 
 //    @Transactional
 //    @Modifying

@@ -27,9 +27,5 @@ public class OrderProductImplementation implements OrderProductInterface {
         return orderProductRepository.save(orderProduct);
     }
 
-//    @Override
-//    public Payment getbyId(int id) {
-//        return orderProductRepository.findById(id);
-//    }
 
 }

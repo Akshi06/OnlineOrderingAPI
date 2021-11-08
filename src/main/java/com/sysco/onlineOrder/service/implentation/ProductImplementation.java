@@ -6,6 +6,7 @@ import com.sysco.onlineOrder.service.ProductInterface;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 
 @Service
@@ -16,19 +17,14 @@ public class ProductImplementation implements ProductInterface {
 
     @Override
     public List<Product> getAllProduct() {
-        return productRepository.findAll();
+        return productRepository.findAllProduct();
     }
 
     @Override
-    public List<Product>  getProductById(int productId) {
-        return productRepository.findByProductId(productId);
+    public List<Product> getProductById(Integer productId) {
+        return productRepository.groupByProductId(productId);
     }
 
-
-    @Override
-    public Product add(Product product) {
-        return productRepository.save(product);
-    }
 
 
     @Override

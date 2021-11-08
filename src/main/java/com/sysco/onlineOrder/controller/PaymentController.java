@@ -1,6 +1,8 @@
 package com.sysco.onlineOrder.controller;
 
+import com.sysco.onlineOrder.entity.Order;
 import com.sysco.onlineOrder.entity.Payment;
+import com.sysco.onlineOrder.service.OrderInterface;
 import com.sysco.onlineOrder.service.OrderProductInterface;
 import com.sysco.onlineOrder.service.PaymentInterface;
 import org.slf4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,6 +27,10 @@ public class PaymentController {
 
     @Autowired
     private PaymentInterface paymentInterface;
+
+    @Autowired
+    private OrderInterface orderInterface;
+
 
 
     @Autowired
@@ -57,15 +64,30 @@ public class PaymentController {
 
 
     @PostMapping("/payment")
-    public ResponseEntity<Payment> add(@RequestBody Payment payment) {
+    public ResponseEntity <Payment> addPayment (@RequestParam(required = false)  Integer orderId , Integer totalPayment ) {
+
+
+        Payment PlacePayment = null;
         Payment payment1 = new Payment();
 
+        Order order = orderInterface.getOrderId(orderId);
+
+        long millis = System.currentTimeMillis();
+        Date date = new Date(millis);
+
+        payment1.setPaymentDate(date);
+        payment1.setOrderDetail(order);
+        payment1.setTotalPayment(totalPayment);
+
+
+
+
         try {
-            payment1 = paymentInterface.addPayment(payment);
+            PlacePayment = paymentInterface.addPayment(payment1);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity<Payment>(payment, HttpStatus.OK);
+        return new ResponseEntity <Payment> (PlacePayment, HttpStatus.OK);
     }
 
 

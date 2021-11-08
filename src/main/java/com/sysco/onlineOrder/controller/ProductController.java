@@ -1,11 +1,13 @@
 package com.sysco.onlineOrder.controller;
 
+
 import com.sysco.onlineOrder.entity.Product;
 import com.sysco.onlineOrder.service.ProductInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,7 @@ import java.util.List;
 @CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping({"/v1/online-order"})
+
 public class ProductController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductController.class);
@@ -54,6 +57,7 @@ public class ProductController {
      */
     @GetMapping("/products/category")
     @ResponseBody
+//    @RequestMapping(value="/products/category", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<List<Product>> findByCategories(@RequestParam(required = true) String categories) {
         List<Product> requestList = null;
 
@@ -77,8 +81,9 @@ public class ProductController {
      */
     @GetMapping("/products/{productId}")
     @ResponseBody
-    public ResponseEntity< List<Product> >getProductById (@PathVariable("productId") int productId) {
-     List <Product> products = null;
+//    @RequestMapping(value="/products/{productId}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity< List<Product> >getProductById (@PathVariable("productId") Integer productId) {
+        List <Product> products = null;
 
         try {
             products = productInterface.getProductById(productId);

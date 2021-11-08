@@ -1,22 +1,29 @@
 package com.sysco.onlineOrder.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "product")
-public class Product {
+public class Product implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int productId;
+    private Integer productId ;
 
     @Column(name = "product_price")
     private double price;
 
     @Column(name = "product_categories")
     private String categories;
-    // Category
+
 
     @Column(name = "product_name")
     private String productName;
@@ -27,9 +34,10 @@ public class Product {
     @Column(name = "product_description")
     private String productDescription;
 
-
-    @OneToMany(mappedBy = "product")
+    @JsonManagedReference
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy = "product")
     private List<OrderProduct> orderProductList;
+
 
 
     public Product() {
@@ -54,11 +62,11 @@ public class Product {
         this.img = img;
     }
 
-    public int getProductId() {
+    public Integer getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(Integer productId) {
         this.productId = productId;
     }
 
@@ -78,6 +86,14 @@ public class Product {
         this.price = price;
     }
 
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
     public String getCategories() {
         return categories;
     }
@@ -86,13 +102,12 @@ public class Product {
         this.categories = categories;
     }
 
-
-    public String getProductName() {
-        return productName;
+    public List<OrderProduct> getOrderProductList() {
+        return orderProductList;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
+    public void setOrderProductList(List<OrderProduct> orderProductList) {
+        this.orderProductList = orderProductList;
     }
 
     @Override
@@ -103,7 +118,7 @@ public class Product {
                 ", categories='" + categories + '\'' +
                 ", productName='" + productName + '\'' +
                 ", img='" + img + '\'' +
-                ", orderProductList=" + orderProductList +
+
                 '}';
     }
 }

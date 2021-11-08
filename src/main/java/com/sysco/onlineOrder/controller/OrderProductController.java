@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -37,7 +39,7 @@ public class OrderProductController {
      * add order product
      *
      * @param productId productId
-     * @param productQuantity productQuantity
+     * @param productQuntity productQuantity
      * @param orderId orderId
      * @return {@link ResponseEntity}
      * @see ResponseEntity
@@ -45,24 +47,39 @@ public class OrderProductController {
      */
     @PostMapping("/order-product")
     @ResponseBody
-    public ResponseEntity<OrderProduct> addTheOrderProduct(@RequestParam(required = false) int productId, Integer productQuantity, int orderId) {
+    public ResponseEntity<OrderProduct> addTheOrderProduct(@RequestParam(required = false)  Integer orderId, Integer productId, Integer productQuntity) {
+
+        System.out.println("productId : " + productId);
+        System.out.println("productQuntity : " + productQuntity);
+        System.out.println("orderId : "  + orderId);
 
         OrderProduct setOrderPEntity = new OrderProduct();
         OrderProduct orderedProduct = new OrderProduct();
 
-        Product product1 = (Product) productInterface.getProductById(productId);
+
         Order order = orderInterface.getOrderId(orderId);
 
-        setOrderPEntity.setProductQuantity(productQuantity);
-        setOrderPEntity.setProduct(product1);
-        setOrderPEntity.setOrderDetail(order);
+
+//        Product product1 = (Product) productInterface.getProductById(productId);
+        for(Product getProduct : productInterface.getProductById(productId)){
+            if(Objects.equals(getProduct.getProductId(), productId)){
+
+
+                setOrderPEntity.setOrderDetail(order);
+                setOrderPEntity.setProduct(getProduct);
+                setOrderPEntity.setProductQuantity(productQuntity);
+
+
+            }
+        }
 
         try {
             orderedProduct = orderProductInterface.addTheOrderProduct(setOrderPEntity);
         } catch (Exception ex) {
-            LOGGER.error(Arrays.toString(ex.getStackTrace()));
+//            LOGGER.error(Arrays.toString(ex.getStackTrace()));
+            System.out.println(ex);
         }
-        return new ResponseEntity<OrderProduct>(orderedProduct, HttpStatus.OK);
+        return new ResponseEntity<OrderProduct>(orderedProduct,HttpStatus.OK);
     }
 
 }

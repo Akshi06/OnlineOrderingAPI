@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "payments")
+@Table(name = "payment1")
 public class Payment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,27 +18,19 @@ public class Payment {
     private Date paymentDate;
 
     @OneToOne
-    @JoinColumn(name = "order_product_id")
-    private OrderProduct orderProduct;
+    @JoinColumn(name = "order_id")
+    private Order orderDetail;
 
     public Payment() {
 
     }
 
-    public Payment(int invoiceNo, int totalPayment, Date paymentDate, OrderProduct orderProduct) {
+    public Payment(int invoiceNo, int totalPayment, Date paymentDate, Order orderDetail) {
         this.invoiceNo = invoiceNo;
         this.totalPayment = totalPayment;
         this.paymentDate = paymentDate;
-        this.orderProduct = orderProduct;
+        this.orderDetail = orderDetail;
 
-    }
-
-    public OrderProduct getOrderProduct() {
-        return orderProduct;
-    }
-
-    public void setOrderProduct(OrderProduct orderProduct) {
-        this.orderProduct = orderProduct;
     }
 
     public int getInvoiceNo() {
@@ -65,5 +57,12 @@ public class Payment {
         this.paymentDate = paymentDate;
     }
 
+    public Order getOrderDetail() {
+        return orderDetail;
+    }
+
+    public void setOrderDetail(Order orderDetail) {
+        this.orderDetail = orderDetail;
+    }
 }
 

@@ -8,9 +8,7 @@ import java.util.List;
 public interface ProductInterface {
     List<Product> getAllProduct();
 
-    List<Product>  getProductById (int productId);
-
-    Product add(Product product);
+    List <Product> getProductById (Integer productId);
 
     List<Product> findByCategories(String categories);
 

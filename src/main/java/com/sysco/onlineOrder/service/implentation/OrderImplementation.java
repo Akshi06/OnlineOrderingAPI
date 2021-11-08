@@ -48,7 +48,8 @@ public class OrderImplementation implements OrderInterface {
      */
 
     @Override
-    public Order getOrderId(int OrderId) {
-        return orderRepository.findById(OrderId);
+    public Order getOrderId(Integer OrderId) {
+
+        return orderRepository.getById(OrderId);
     }
 }
