@@ -4,7 +4,6 @@ import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.CustomerAddress;
 import com.sysco.onlineOrder.service.CustomerAddressInterface;
 import com.sysco.onlineOrder.service.CustomerInterface;
-import netscape.javascript.JSObject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.List;
-
 
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -50,7 +48,6 @@ public class CustomerController {
     }
 
 
-
     /**
      * get customer by id
      *
@@ -60,14 +57,14 @@ public class CustomerController {
      */
     @GetMapping("/customer/{cusId}")
     @ResponseBody
-    public ResponseEntity <Customer> getCustomerById(@PathVariable("cusId") int cusId) {
+    public ResponseEntity<Customer> getCustomerById(@PathVariable("cusId") int cusId) {
         Customer customers = null;
         try {
             customers = customerInterface.getCustomerById(cusId);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Customer> (customers, HttpStatus.OK);
+        return new ResponseEntity<Customer>(customers, HttpStatus.OK);
     }
 
     /**
@@ -79,7 +76,7 @@ public class CustomerController {
      * @see Customer
      */
     @PostMapping("/customer")
-    public ResponseEntity<Customer> addTheCustomer(@RequestBody Customer cus , int id) {
+    public ResponseEntity<Customer> addTheCustomer(@RequestBody Customer cus, int id) {
         Customer setCustomer = new Customer();
         Customer customer = new Customer();
 
@@ -94,7 +91,6 @@ public class CustomerController {
         }
         return new ResponseEntity<Customer>(customer, HttpStatus.OK);
     }
-
 
 
 }

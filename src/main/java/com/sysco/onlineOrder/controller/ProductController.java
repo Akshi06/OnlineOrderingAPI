@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -46,7 +45,6 @@ public class ProductController {
     }
 
 
-
     /**
      * find by categories
      *
@@ -82,15 +80,15 @@ public class ProductController {
     @GetMapping("/products/{productId}")
     @ResponseBody
 //    @RequestMapping(value="/products/{productId}", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity< List<Product> >getProductById (@PathVariable("productId") Integer productId) {
-        List <Product> products = null;
+    public ResponseEntity<List<Product>> getProductById(@PathVariable("productId") Integer productId) {
+        List<Product> products = null;
 
         try {
             products = productInterface.getProductById(productId);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity< List<Product> > (products, HttpStatus.OK);
+        return new ResponseEntity<List<Product>>(products, HttpStatus.OK);
     }
 
 }

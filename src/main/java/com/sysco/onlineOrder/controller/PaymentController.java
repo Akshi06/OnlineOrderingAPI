@@ -32,7 +32,6 @@ public class PaymentController {
     private OrderInterface orderInterface;
 
 
-
     @Autowired
     private OrderProductInterface orderProductInterface;
 
@@ -51,20 +50,19 @@ public class PaymentController {
 
 
     @GetMapping("/invoiceId/{id}")
-    public ResponseEntity <Payment> getIdPayment(@PathVariable("invoice_id") int invoice_id) {
+    public ResponseEntity<Payment> getIdPayment(@PathVariable("invoice_id") int invoice_id) {
         Payment payment = null;
         try {
             payment = paymentInterface.getPaymentId(invoice_id);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Payment>(payment, HttpStatus.OK);
+        return new ResponseEntity<Payment>(payment, HttpStatus.OK);
     }
 
 
-
     @PostMapping("/payment")
-    public ResponseEntity <Payment> addPayment (@RequestParam(required = false)  Integer orderId , Integer totalPayment ) {
+    public ResponseEntity<Payment> addPayment(@RequestParam(required = false) Integer orderId, Integer totalPayment) {
 
 
         Payment PlacePayment = null;
@@ -80,14 +78,12 @@ public class PaymentController {
         payment1.setTotalPayment(totalPayment);
 
 
-
-
         try {
             PlacePayment = paymentInterface.addPayment(payment1);
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Payment> (PlacePayment, HttpStatus.OK);
+        return new ResponseEntity<Payment>(PlacePayment, HttpStatus.OK);
     }
 
 

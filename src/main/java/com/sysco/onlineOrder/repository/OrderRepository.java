@@ -1,6 +1,5 @@
 package com.sysco.onlineOrder.repository;
 
-import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;

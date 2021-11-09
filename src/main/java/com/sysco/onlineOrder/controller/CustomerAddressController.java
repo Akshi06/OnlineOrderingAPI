@@ -1,9 +1,7 @@
 package com.sysco.onlineOrder.controller;
 
-import com.sysco.onlineOrder.entity.Customer;
 import com.sysco.onlineOrder.entity.CustomerAddress;
 import com.sysco.onlineOrder.service.CustomerAddressInterface;
-import com.sysco.onlineOrder.service.CustomerInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +24,7 @@ public class CustomerAddressController {
     private CustomerAddressInterface customerAddressInterface;
 
     @GetMapping("/customer-address")
-    public ResponseEntity<List<CustomerAddress>> getAllAddresses(){
+    public ResponseEntity<List<CustomerAddress>> getAllAddresses() {
         List<CustomerAddress> addresses = null;
         try {
             addresses = customerAddressInterface.getAllAddress();
@@ -37,27 +35,26 @@ public class CustomerAddressController {
     }
 
     @GetMapping("/customer-address/{id}")
-    public ResponseEntity <List<CustomerAddress>> getAddressById(@PathVariable("id") int addressId){
+    public ResponseEntity<List<CustomerAddress>> getAddressById(@PathVariable("id") int addressId) {
         List<CustomerAddress> customerAddress = null;
         try {
             customerAddress = customerAddressInterface.getAddressById(addressId);
-        }
-        catch (Exception ex){
+        } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
         return new ResponseEntity<List<CustomerAddress>>(customerAddress, HttpStatus.OK);
     }
 
     @PostMapping("/customer-address")
-    public ResponseEntity <CustomerAddress> addTheAddress(@RequestBody CustomerAddress customerAddress){
+    public ResponseEntity<CustomerAddress> addTheAddress(@RequestBody CustomerAddress customerAddress) {
         CustomerAddress customerAddress1 = new CustomerAddress();
 
         try {
             customerAddress1 = customerAddressInterface.addAddress(customerAddress);
-        }catch (Exception ex){
+        } catch (Exception ex) {
             ex.getMessage();
         }
-        return  new ResponseEntity<CustomerAddress>(customerAddress1,HttpStatus.OK);
+        return new ResponseEntity<CustomerAddress>(customerAddress1, HttpStatus.OK);
     }
 
 

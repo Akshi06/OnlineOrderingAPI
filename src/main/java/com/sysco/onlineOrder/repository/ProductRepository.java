@@ -22,13 +22,12 @@ public interface ProductRepository extends JpaRepository<Product, Integer>, Crud
     @Transactional
     @Modifying
     @Query(value = " FROM Product WHERE productId =?1")
-     List <Product> groupByProductId(Integer productId);
+    List<Product> groupByProductId(Integer productId);
 
     @Transactional
     @Modifying
     @Query(value = " FROM Product WHERE categories =?1")
-    List<Product> findByCategories (String categories);
-
+    List<Product> findByCategories(String categories);
 
 
 }

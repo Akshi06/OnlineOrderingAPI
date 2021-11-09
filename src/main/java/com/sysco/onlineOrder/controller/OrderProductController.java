@@ -3,8 +3,8 @@ package com.sysco.onlineOrder.controller;
 import com.sysco.onlineOrder.entity.Order;
 import com.sysco.onlineOrder.entity.OrderProduct;
 import com.sysco.onlineOrder.entity.Product;
-import com.sysco.onlineOrder.service.OrderProductInterface;
 import com.sysco.onlineOrder.service.OrderInterface;
+import com.sysco.onlineOrder.service.OrderProductInterface;
 import com.sysco.onlineOrder.service.ProductInterface;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,8 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 
@@ -38,20 +36,20 @@ public class OrderProductController {
     /**
      * add order product
      *
-     * @param productId productId
+     * @param productId      productId
      * @param productQuntity productQuantity
-     * @param orderId orderId
+     * @param orderId        orderId
      * @return {@link ResponseEntity}
      * @see ResponseEntity
      * @see OrderProduct
      */
     @PostMapping("/order-product")
     @ResponseBody
-    public ResponseEntity<OrderProduct> addTheOrderProduct(@RequestParam(required = false)  Integer orderId, Integer productId, Integer productQuntity) {
+    public ResponseEntity<OrderProduct> addTheOrderProduct(@RequestParam(required = false) Integer orderId, Integer productId, Integer productQuntity) {
 
         System.out.println("productId : " + productId);
         System.out.println("productQuntity : " + productQuntity);
-        System.out.println("orderId : "  + orderId);
+        System.out.println("orderId : " + orderId);
 
         OrderProduct setOrderPEntity = new OrderProduct();
         OrderProduct orderedProduct = new OrderProduct();
@@ -61,8 +59,8 @@ public class OrderProductController {
 
 
 //        Product product1 = (Product) productInterface.getProductById(productId);
-        for(Product getProduct : productInterface.getProductById(productId)){
-            if(Objects.equals(getProduct.getProductId(), productId)){
+        for (Product getProduct : productInterface.getProductById(productId)) {
+            if (Objects.equals(getProduct.getProductId(), productId)) {
 
 
                 setOrderPEntity.setOrderDetail(order);
@@ -79,7 +77,7 @@ public class OrderProductController {
 //            LOGGER.error(Arrays.toString(ex.getStackTrace()));
             System.out.println(ex);
         }
-        return new ResponseEntity<OrderProduct>(orderedProduct,HttpStatus.OK);
+        return new ResponseEntity<OrderProduct>(orderedProduct, HttpStatus.OK);
     }
 
 }

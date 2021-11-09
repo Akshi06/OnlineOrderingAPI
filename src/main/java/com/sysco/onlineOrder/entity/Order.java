@@ -1,8 +1,6 @@
 package com.sysco.onlineOrder.entity;
 
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
 import java.sql.Date;
 import java.util.List;
@@ -26,7 +24,7 @@ public class Order {
     private List<OrderProduct> orderProductList;
 
 
-    @OneToOne(mappedBy = "orderDetail" )
+    @OneToOne(mappedBy = "orderDetail")
     private Payment payment;
 
     public Order() {

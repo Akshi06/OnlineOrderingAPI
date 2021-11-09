@@ -44,7 +44,6 @@ public class OrderController {
     }
 
 
-
     /**
      * add the order
      *
@@ -60,10 +59,10 @@ public class OrderController {
 
 //    @PostMapping("/orders/{cusId}")
 //    @ResponseBody
-    public ResponseEntity <Order> addTheOrder(@RequestParam(required = false) int cusId) {
+    public ResponseEntity<Order> addTheOrder(@RequestParam(required = false) int cusId) {
 
 //        take customerId
-        Customer customer2 =  customerInterface.getCustomerById(cusId);
+        Customer customer2 = customerInterface.getCustomerById(cusId);
 
         Order PlaceOrder = null;
         Order order = new Order();
@@ -81,6 +80,6 @@ public class OrderController {
         } catch (Exception ex) {
             LOGGER.error(Arrays.toString(ex.getStackTrace()));
         }
-        return new ResponseEntity <Order> (PlaceOrder, HttpStatus.OK);
+        return new ResponseEntity<Order>(PlaceOrder, HttpStatus.OK);
     }
 }
