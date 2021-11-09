@@ -41,7 +41,7 @@ class PastaCollection extends React.Component {
                                         <h3> Rs:{items.price}</h3>
                                         
                                         <Link to={"/product/" + items.productId}>
-                                                    <button>Order</button>
+                                                    <button className="orderBtn">Order</button>
                                         </Link>
                                      
                                     </div>

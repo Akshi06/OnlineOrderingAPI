@@ -1,11 +1,10 @@
 import React,  { useState } from 'react';
 import "./Cart.css";
-// import{Link} from "react-router-dom";
+import{Link} from "react-router-dom";
 import ProductService from '../../service/ProductService';
 
 function CartPart() {
     const [order, setOrder] = useState(0);
-    // const [payment, setPayment] = useState(0);
     const getItemArray = JSON.parse(localStorage.getItem('allItem') || '0');
 
     let priceArray = []
@@ -58,10 +57,9 @@ function CartPart() {
             
             
         })
+        alert("successfully pay")
         
     }
-    
-
     
     return (
         <div>
@@ -80,7 +78,7 @@ function CartPart() {
                         letIArray.map((items,i) => 
                         (
                             <tr key = {i}>
-                                <td data-th="Product" className="th1">
+                                <td data-th="Product" className="td1">
                                     <div className="row">
                                         <div className="col-sm-2 hidden-xs"><img src={items.soupItem.img} alt="..." className="img-responsive"/></div>
                                         <div className="col-sm-10">
@@ -89,11 +87,11 @@ function CartPart() {
                                          </div>
                                     </div>
                                 </td>
-                                <td data-th="Price" className="th2"> Rs:{items.soupItem.price}</td>
-                                <td data-th="Quantity" className="th3">
+                                <td data-th="Price" className="td2"> Rs:{items.soupItem.price}</td>
+                                <td data-th="Quantity" className="td3">
                                     <p className="form-control text-center">{items.productQuntity}</p>
                                 </td>
-                                <td  data-th="Subtotal" className="text-center th4">{subTotal(items.soupItem.price , items.productQuntity)}</td>
+                                <td  data-th="Subtotal" className="text-center td4">{subTotal(items.soupItem.price , items.productQuntity)}</td>
                                 <td className="actions" data-th=""></td>
                             </tr>
                         ))
@@ -108,9 +106,12 @@ function CartPart() {
 						</tr>
 					</tfoot>
 				</table>
-            {/* <Link to ="/"> */}
+            <Link to ="/" className="link">
+                <div className="payBtn">
                 <button onClick = {postData} className="cartBtn">Pay</button>
-            {/* </Link> */}
+                </div>
+                
+            </Link>
         </div>
     );
 }

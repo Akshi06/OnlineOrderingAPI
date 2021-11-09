@@ -13,7 +13,7 @@ class ProductService {
         return Service.get("/products/category?categories=pasta");
     }
 
-    get(productId){
+    getByProductId(productId){
         return Service.get(`/products/${productId}`);
     }
     postOrder(){

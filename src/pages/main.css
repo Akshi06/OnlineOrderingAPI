@@ -139,3 +139,13 @@
 .fmain{
     padding-top: 10%;
 }
+
+@media screen and (max-width:700px){
+    .threePic{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+}

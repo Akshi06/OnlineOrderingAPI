@@ -61,7 +61,7 @@ class ViewProductDetail extends React.Component {
 
   
     getProduct(productId){
-        ProductService.get(productId)
+        ProductService.getByProductId(productId)
         .then(response =>{
             this.setState({
                 soupItem:response.data[0]
@@ -71,35 +71,6 @@ class ViewProductDetail extends React.Component {
      
 
     } 
-
-    // setItemToLocal(productId,productName,price){
-
-    //     let allItem = JSON.parse(localStorage.getItem("allItem"));
-
-    //     if(allItem == null) allItem = [];
-    //     console.log(allItem);
-    //     // window.localStorage.clear();
-       
-        
-    //     let items = {
-    //         id:productId,
-    //         name:productName,
-    //         price:price,
-    //         Quntity:this.state.productQuntity,
-           
-    //     }
-        
-    //     localStorage.setItem("item", JSON.stringify(items));
-
-    //     allItem.push(items);
-
-    //     localStorage.setItem("allItem" , JSON.stringify(allItem));
-
-    //     // localStorage.getItem(items)
-    //     // console.log(items)
-    //     }
-    
-    
 
     render() {
         const {soupItem} = this.state;
@@ -125,8 +96,6 @@ class ViewProductDetail extends React.Component {
                                         value={this.state.productQuntity}
                                         className="form-control"
                                         id="productQuntity"
-                                        // required
-                                        // value={this.state.productQuntity}
                                         onChange={this.onChangeQuntity}
                                         name="productQuntity"
                                     />
@@ -134,18 +103,7 @@ class ViewProductDetail extends React.Component {
                                 </div>
                            
                                 <Link to = "">
-                                    <button type="submit"
-                                                // onClick={
-                                                //     this.setItemToLocal(
-                                                //         soupItem.productId,
-                                                //         soupItem.productName, 
-                                                //         soupItem.price, 
-                                                //         this.state.productQuntity
-                                                //     )
-                                                // } 
-                                                // onClick={this.saveQuntity()}
-                                                className="btn btn-success"
-                                        >
+                                    <button type="submit"className="btn btn-success">
                                         Add to cart
                                     </button>
                                 </Link>

@@ -29,7 +29,7 @@ function App() {
           <Route path = "/cart-page" exact><Cart /></Route>
         </Switch>
       </Router>
-      {/* <Singup /> */}
+      
 
      
       
