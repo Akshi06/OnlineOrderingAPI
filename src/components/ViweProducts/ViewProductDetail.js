@@ -12,6 +12,7 @@ class ViewProductDetail extends React.Component {
         super(props);
         this.getProduct = this.getProduct.bind(this);
         this.onChangeQuntity = this.onChangeQuntity.bind(this);
+        this.postDataInToLocal = this.postDataInToLocal.bind(this);
        
         this.state = {
             soupItem:{
@@ -34,31 +35,118 @@ class ViewProductDetail extends React.Component {
         });
     }
 
+
     componentDidMount(){
         this.getProduct(this.props.match.params.productId);
-
-        let allItem = JSON.parse(localStorage.getItem("allItem"));
-        if(allItem == null) allItem = [];
-
-        this.itemData = JSON.parse(localStorage.getItem("items"));
-
-        if(localStorage.getItem("items")){
-            this.setState({
-                productQuntity:this.itemData.productQuntity
-            })
-            console.log(this.itemData)
-        
-        }
-        allItem.push(this.itemData);
-        localStorage.setItem("allItem" , JSON.stringify(allItem));
-       
     }
+
     componentWillUpdate(nextProps, nextState) {
         localStorage.setItem('items', JSON.stringify(nextState));
-    
     }
-   
 
+    removingDupplicates(items){
+        let equalities = [];
+
+        for(let i of items){
+            if(equalities.indexOf(i) === -1){
+                equalities.push(i);
+            }
+        }
+
+        return equalities;
+    }
+    
+    postDataInToLocal(){
+
+        let allItem = JSON.parse(localStorage.getItem("allItem"));
+
+        let itemData = JSON.parse(localStorage.getItem("items"));
+
+        let finalAllItem =[];
+
+        let eleQuantity = 0;
+        let stateQuantity = 0;
+        let tot = 0;
+
+        console.log("befor if null");
+        if (allItem == null){
+
+            allItem = [];
+
+            finalAllItem.push(itemData);
+
+            console.log("allItem" , finalAllItem);
+
+            localStorage.setItem("allItem" , JSON.stringify(finalAllItem));
+
+        }else{ 
+            console.log("for let i");
+
+            let count = 1;
+
+            for(let i = 0; i < allItem.length;i++){
+                count+=1;
+
+                console.log(count);
+
+
+                if (JSON.stringify(allItem[i].soupItem.productId) === JSON.stringify(itemData.soupItem.productId)) {
+
+                    console.log("checking equalities");
+
+                    if (window.confirm('You have already added this item. Are you sure you want to add this ?')) {
+
+                        eleQuantity = Number(allItem[i].productQuntity);
+
+                        stateQuantity = Number(this.state.productQuntity);
+
+                        tot = eleQuantity + stateQuantity;
+                        
+                        const index = allItem.indexOf(allItem[i]);
+
+                        if (index > -1) {
+                            allItem.splice(index, 1);
+
+                            console.log("deleting", index);
+                        }
+
+                        if(localStorage.getItem("items")){
+
+                            this.setState({
+
+                                productQuntity:tot
+                            })
+                            
+                        }
+                        finalAllItem.push(itemData);
+
+                        itemData.productQuntity = tot;
+
+                    }else{
+                        console.log("conifirmation canceled");
+                        break;
+                    }
+                }else{
+                    finalAllItem.push(itemData);
+
+                    console.log("no any equalities");
+                }
+            }
+
+            for(let c = 0; c < allItem.length; c++){
+                finalAllItem.push(allItem[c])
+            }
+
+
+            let finalArray = this.removingDupplicates(finalAllItem)
+            
+            console.log(finalArray, "final array");
+
+            localStorage.setItem("allItem" , JSON.stringify(finalArray))
+
+        }
+
+    }
   
     getProduct(productId){
         ProductService.getByProductId(productId)
@@ -103,7 +191,7 @@ class ViewProductDetail extends React.Component {
                                 </div>
                            
                                 <Link to = "">
-                                    <button type="submit"className="btn btn-success">
+                                    <button type="submit"  onClick = {this.postDataInToLocal}className="btn btn-success">
                                         Add to cart
                                     </button>
                                 </Link>

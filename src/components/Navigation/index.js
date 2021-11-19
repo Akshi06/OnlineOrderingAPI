@@ -10,6 +10,7 @@ const Nav = () => {
                         </Link>
                        
                     </div>
+                    
                     <div className = "navBtn">
                     <Link to={"/cart-page"}>
                              <button className="viweCartBtn"><i className="fa fa-shopping-cart"></i></button>

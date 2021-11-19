@@ -2,6 +2,7 @@ import React from 'react';
 import './Collection.css';
 import ProductService from '../../service/ProductService';
 import{Link} from "react-router-dom"
+import BackBtn from '../Gobackbtn/BackBtn';
 
 
 
@@ -29,7 +30,8 @@ class SaladCollection extends React.Component {
         
             return(
                 <div className ='topic'>
-                    <h1>_. Salad Dishes._</h1>
+                    <BackBtn />
+                    <h1 className="topicMain">_.Salad Dishes._</h1>
                     <div className='mainCard'>
                     
                         {
@@ -43,7 +45,7 @@ class SaladCollection extends React.Component {
                                                         <h3>{items.productName}</h3>
                                                         <h3> Rs:{items.price}</h3>
                                                         <Link to={"/product/" + items.productId}>
-                                                            <button>Order</button>
+                                                            <button className="orderBtn">Order</button>
                                                         </Link>
                                                         
                                                     </div>

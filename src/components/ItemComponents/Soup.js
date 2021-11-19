@@ -3,6 +3,7 @@ import './ItemIndex.css';
 import SoupCollection from '../ItemCollection/SoupCollection'
 
 
+
 const Soup = () => {
     return (
         <div>
@@ -16,7 +17,10 @@ const Soup = () => {
                         </div>
                     </div>
                 </section>
+                
+               
                 <SoupCollection />
+                
             </div>  
         </div>
     );

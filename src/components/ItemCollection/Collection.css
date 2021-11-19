@@ -5,6 +5,9 @@
 
 .topic{
     padding-top: 15%;
+    padding-left: 5px;
+}
+.topicMain{
     text-align: center;
 }
 .topic h1{

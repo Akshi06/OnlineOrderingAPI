@@ -4,6 +4,7 @@ import{Link} from "react-router-dom";
 import ProductService from '../../service/ProductService';
 
 function CartPart() {
+    // eslint-disable-next-line
     const [order, setOrder] = useState(0);
     const getItemArray = JSON.parse(localStorage.getItem('allItem') || '0');
 
@@ -11,7 +12,17 @@ function CartPart() {
     let total = 0 
     let letIArray =[]
  
- 
+    // let localStorageClone = localStorage.getItem('allItem');
+    // let localStorageReal = localStorage.getItem('allItem');
+
+    // for(let i=0;i < localStorageClone.length; i++){
+    //     for(let j=0;j < localStorageReal.length; j++){
+    //         if(i==j){
+    //             items.productQuntity(i+j)
+    //         }
+
+    //     }
+    // }
 
     for(let i in getItemArray){
         if(getItemArray[i] != null){
@@ -33,15 +44,15 @@ function CartPart() {
     
     function totalPrice(){
        for(let i = 0; i < priceArray.length; i++){
-        total = total + priceArray[i]
-        localStorage.setItem('totalPrice' , total);
+            total = total + priceArray[i]
+            localStorage.setItem('totalPrice' , total);
        }
         return total
     }
 
 
     async function postData(){
-        ProductService.postOrder()
+       await ProductService.postOrder()
         .then((response) =>{
             setOrder({
                 order:response.data.orderId
@@ -57,8 +68,8 @@ function CartPart() {
             
             
         })
-        alert("successfully pay")
-        
+       alert("Thank You Yummy Tummy Foods")
+        localStorage.clear();
     }
     
     return (

@@ -2,6 +2,7 @@ import React from 'react';
 import './Collection.css';
 import ProductService from '../../service/ProductService';
 import{Link} from "react-router-dom"
+import BackBtn from '../Gobackbtn/BackBtn';
 
 
 class PastaCollection extends React.Component {
@@ -28,7 +29,8 @@ class PastaCollection extends React.Component {
         
         return(
             <div className ='topic'>
-                <h1>_. Pasta Dishes ._</h1>
+                 <BackBtn />
+                <h1 className="topicMain">_. Pasta Dishes ._</h1>
                 <div className='mainCard'>
                     {
                         this.state.item.map(
